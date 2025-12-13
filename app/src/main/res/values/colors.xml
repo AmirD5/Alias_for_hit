@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Team Colors -->
+    <color name="team_red">#F44336</color>
+    <color name="team_blue">#2196F3</color>
+    <color name="team_green">#4CAF50</color>
+    <color name="team_yellow">#FFEB3B</color>
+    <color name="team_orange">#FF9800</color>
+    <color name="team_purple">#9C27B0</color>
+    <color name="team_pink">#E91E63</color>
+    <color name="team_teal">#009688</color>
+</resources>
