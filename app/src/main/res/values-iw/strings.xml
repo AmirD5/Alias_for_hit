@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">אליאס</string>
+
+    <!-- Main List Screen -->
+    <string name="title_card_list">הקבוצות שלי</string>
+    <string name="welcome_to_alias">ברוך הבא לאליאס</string>
+    <string name="the_teams_are">הקבוצות הן:</string>
+    <string name="add_a_team">הוסף קבוצה</string>
+    <string name="add_card">הוסף קבוצה</string>
+    <string name="no_cards">אין קבוצות עדיין, לחץ \"הוסף קבוצה\" כדי להוסיף את הקבוצה הראשונה שלך!</string>
+
+    <!-- Add/Edit Screen -->
+    <string name="title_add_card">הוסף קבוצה חדשה</string>
+    <string name="title_edit_card">ערוך קבוצה</string>
+    <string name="hint_word">שם הקבוצה (הכרחי)</string>
+    <string name="hint_category">צבע הקבוצה (אופציונלי)</string>
+    <string name="choose_team_color">בחר את צבע הקבוצה:</string>
+    <string name="hint_hint">הערות (אופציונלי)</string>
+    <string name="pick_image">בחר תמונה לקבוצה</string>
+    <string name="change_image">שנה את תמונת הקבוצה</string>
+    <string name="save">שמור</string>
+    <string name="required_field">השדה הזה הכרחי</string>
+
+    <!-- Details Screen -->
+    <string name="title_card_details">מאפייני הקבוצה</string>
+    <string name="edit">ערוך קבוצה</string>
+
+    <!-- Delete Confirmation -->
+    <string name="delete_card">מחק קבוצה</string>
+    <string name="confirm_delete_message">אתה בטוח שאתה רוצה למחוק את הקבוצה הזו? לא ניתן לבטל שינוי זה</string>
+    <string name="delete">מחק</string>
+    <string name="cancel">בטל</string>
+
+    <!-- Messages -->
+    <string name="saved_successfully">הקבוצה נשמרה בהצלחה</string>
+    <string name="deleted_successfully">הקבוצה נמחקה</string>
+    <string name="error_occurred">שגיאה</string>
+    <string name="photo_required">"תמונת הקבוצה הכרחית "</string>
+    <string name="group_members">משתתפי הקבוצה</string>
+    <string name="no_members_listed">לא נרשמו חברים</string>
+    <string name="no_notes">אין הערות</string>
+    <string name="no_color_set">צבע לא נבחר</string>
+    <string name="teal">טורקיז</string>
+    <string name="pink">ורוד</string>
+    <string name="purple">סגול</string>
+    <string name="orange">כתום</string>
+    <string name="yellow">צהוב</string>
+    <string name="green">ירוק</string>
+    <string name="blue">כחול</string>
+    <string name="red">אדום</string>
+    <string name="group_members_">משתתפי הקבוצה</string>
+    <string name="failed_to_save_photo">נכשל בניסיון לשמור תמונה</string>
+    <string name="team_name_is_required">שם הקבוצה הכרחי</string>
+</resources>

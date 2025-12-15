@@ -56,6 +56,7 @@ class AddEditFragment : Fragment() {
             val team = viewModel.getTeamById(editingTeamId)
             team?.let {
                 binding.etName.setText(it.name)
+                binding.etMembers.setText(it.members)
                 // Set spinner selection based on saved color
                 val colorIndex = colorArray.indexOf(it.color)
                 if (colorIndex >= 0) {
@@ -77,9 +78,11 @@ class AddEditFragment : Fragment() {
             val name = binding.etName.text.toString().trim()
             val color = binding.spinnerColor.selectedItem.toString()
             val notes = binding.etNotes.text.toString().trim()
+            val members = binding.etMembers.text.toString().trim()
 
             if (name.isEmpty()) {
-                Toast.makeText(requireContext(), "Team name is required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.team_name_is_required), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -92,6 +95,7 @@ class AddEditFragment : Fragment() {
                 id = if (editingTeamId > 0) editingTeamId else 0,
                 name = name,
                 color = color,
+                members = members,
                 notes = notes,
                 imagePath = currentPhotoPath
             )
@@ -114,7 +118,8 @@ class AddEditFragment : Fragment() {
             currentPhotoPath = file.absolutePath
             binding.ivCardImage.setImageURI(uri)
         } catch (_: Exception) {
-            Toast.makeText(requireContext(), "Failed to save photo", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),
+                getString(R.string.failed_to_save_photo), Toast.LENGTH_SHORT).show()
         }
     }
 

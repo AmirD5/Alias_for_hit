@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.hit.aliasgameapp-mergeDebugResources-49:/values-he/values-he.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Noam\\OneDrive\\Desktop\\Noam\\year 3 first semester\\Kotlin\\Alias_for_hit\\app\\src\\main\\res\\values-he\\arrays.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "12",
+                        "endColumns": "19",
+                        "endOffsets": "331"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "11",
+                        "endColumns": "19",
+                        "endOffsets": "318"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -46,8 +46,9 @@ class DetailsFragment : Fragment() {
         }
 
         binding.tvDetailName.text = team.name
-        binding.tvDetailColor.text = team.color.ifEmpty { "No color set" }
-        binding.tvDetailNotes.text = team.notes.ifEmpty { "No notes" }
+        binding.tvDetailColor.text = team.color.ifEmpty { getString(R.string.no_color_set) }
+        binding.tvDetailNotes.text = team.notes.ifEmpty { getString(R.string.no_notes) }
+        binding.tvDetailMembers.text = team.members.ifEmpty { getString(R.string.no_members_listed) }
 
         // Apply the team color to the team name
         val colorResId = getColorResourceId(team.color)
@@ -56,6 +57,9 @@ class DetailsFragment : Fragment() {
 
         if (team.imagePath != null) {
             binding.ivDetailImage.setImageURI(team.imagePath.toUri())
+            binding.ivDetailImage.setOnClickListener {
+                showFullImage(team.imagePath.toUri())
+            }
         } else {
             binding.ivDetailImage.setImageResource(android.R.drawable.ic_menu_gallery)
         }
@@ -66,16 +70,27 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    private fun showFullImage(imageUri: Uri) {
+        val dialog = android.app.Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        val imageView = android.widget.ImageView(requireContext())
+        imageView.setImageURI(imageUri)
+        imageView.scaleType = android.widget.ImageView.ScaleType.FIT_CENTER
+        dialog.setContentView(imageView)
+        dialog.show()
+
+        imageView.setOnClickListener { dialog.dismiss() }
+    }
+
     private fun getColorResourceId(colorName: String): Int {
         return when (colorName) {
-            "Red" -> R.color.team_red
-            "Blue" -> R.color.team_blue
-            "Green" -> R.color.team_green
-            "Yellow" -> R.color.team_yellow
-            "Orange" -> R.color.team_orange
-            "Purple" -> R.color.team_purple
-            "Pink" -> R.color.team_pink
-            "Teal" -> R.color.team_teal
+            "Red", "אדום" -> R.color.team_red
+            "Blue", "כחול" -> R.color.team_blue
+            "Green", "ירוק" -> R.color.team_green
+            "Yellow", "צהוב" -> R.color.team_yellow
+            "Orange", "כתום" -> R.color.team_orange
+            "Purple", "סגול" -> R.color.team_purple
+            "Pink", "ורוד" -> R.color.team_pink
+            "Teal", "טורקיז" -> R.color.team_teal
             else -> R.color.black
         }
     }

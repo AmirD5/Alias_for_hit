@@ -9,6 +9,7 @@ data class Team(
     val id: Int = 0,
     val name: String,
     val color: String,
+    val members: String = "",
     val notes: String = "",
     val imagePath: String? = null
 )

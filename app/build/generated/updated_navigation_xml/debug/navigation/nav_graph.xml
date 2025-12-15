@@ -1,0 +1,35 @@
+<navigation
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/nav_graph"
+app:startDestination="@id/mainListFragment" >
+<fragment
+    android:id="@+id/mainListFragment"
+    android:name="com.hit.aliasgameapp.ui.mainlist.MainListFragment"
+    android:label="@string/title_card_list" />
+<fragment
+    android:id="@+id/addEditFragment"
+    android:name="com.hit.aliasgameapp.ui.addedit.AddEditFragment"
+    android:label="@string/title_add_card" >
+
+    <argument
+        android:name="cardId"
+        android:defaultValue="-1"
+        app:argType="integer" />
+
+</fragment>
+<fragment
+    android:id="@+id/detailsFragment"
+    android:name="com.hit.aliasgameapp.ui.details.DetailsFragment"
+    android:label="@string/title_card_details" >
+
+    <argument
+        android:name="teamId"
+        app:argType="integer" />
+
+</fragment>
+<fragment
+    android:id="@+id/aboutFragment"
+    android:name="com.hit.aliasgameapp.ui.about.AboutFragment"
+    android:label="About" />
+</navigation>

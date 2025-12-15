@@ -24,7 +24,7 @@
         android:name="com.hit.aliasgameapp.ui.details.DetailsFragment"
         android:label="@string/title_card_details">
         <argument
-            android:name="cardId"
+            android:name="teamId"
             app:argType="integer" />
     </fragment>
 

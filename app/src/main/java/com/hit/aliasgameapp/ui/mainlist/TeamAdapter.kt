@@ -50,14 +50,14 @@ class TeamAdapter(
 
         private fun getColorResourceId(colorName: String): Int {
             return when (colorName) {
-                "Red" -> R.color.team_red
-                "Blue" -> R.color.team_blue
-                "Green" -> R.color.team_green
-                "Yellow" -> R.color.team_yellow
-                "Orange" -> R.color.team_orange
-                "Purple" -> R.color.team_purple
-                "Pink" -> R.color.team_pink
-                "Teal" -> R.color.team_teal
+                "Red", "אדום" -> R.color.team_red
+                "Blue", "כחול" -> R.color.team_blue
+                "Green", "ירוק" -> R.color.team_green
+                "Yellow", "צהוב" -> R.color.team_yellow
+                "Orange", "כתום" -> R.color.team_orange
+                "Purple", "סגול" -> R.color.team_purple
+                "Pink", "ורוד" -> R.color.team_pink
+                "Teal", "טורקיז" -> R.color.team_teal
                 else -> R.color.black
             }
         }

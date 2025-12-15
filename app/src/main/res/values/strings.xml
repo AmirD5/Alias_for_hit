@@ -36,4 +36,19 @@
     <string name="deleted_successfully">Team deleted</string>
     <string name="error_occurred">An error occurred</string>
     <string name="photo_required">Team photo is required</string>
+    <string name="group_members">Group members</string>
+    <string name="no_members_listed">No members listed</string>
+    <string name="no_notes">No notes</string>
+    <string name="no_color_set">No color set</string>
+    <string name="teal">Teal</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
+    <string name="orange">Orange</string>
+    <string name="yellow">Yellow</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="group_members_">Group members</string>
+    <string name="failed_to_save_photo">Failed to save photo</string>
+    <string name="team_name_is_required">Team name is required</string>
 </resources>
