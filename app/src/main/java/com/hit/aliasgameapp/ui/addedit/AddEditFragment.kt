@@ -46,13 +46,16 @@ class AddEditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState != null) {
+            currentPhotoPath = savedInstanceState.getString("currentPhotoPath")
+        }
         // Setup color spinner
         val colorArray = resources.getStringArray(R.array.team_colors)
         val colorAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, colorArray)
         colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerColor.adapter = colorAdapter
 
-        if (editingTeamId > 0) {
+        if (savedInstanceState == null && editingTeamId > 0) {
             val team = viewModel.getTeamById(editingTeamId)
             team?.let {
                 binding.etName.setText(it.name)
@@ -64,10 +67,10 @@ class AddEditFragment : Fragment() {
                 }
                 binding.etNotes.setText(it.notes)
                 currentPhotoPath = it.imagePath
-                if (it.imagePath != null) {
-                    binding.ivCardImage.setImageURI(it.imagePath.toUri())
                 }
             }
+        if (currentPhotoPath != null) {
+            binding.ivCardImage.setImageURI(currentPhotoPath!!.toUri())
         }
 
         binding.btnPickImage.setOnClickListener {
@@ -126,5 +129,10 @@ class AddEditFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("currentPhotoPath", currentPhotoPath)
     }
 }
