@@ -27,14 +27,28 @@ class TeamViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun update(team: Team) = viewModelScope.launch(Dispatchers.IO) {
+        val oldTeam = repository.getTeamById(team.id)
+        if (oldTeam != null && oldTeam.imagePath != team.imagePath) {
+            deleteFile(oldTeam.imagePath)
+        }
         repository.update(team)
     }
 
     fun delete(team: Team) = viewModelScope.launch(Dispatchers.IO) {
+        deleteFile(team.imagePath)
         repository.delete(team)
     }
 
     fun getTeamById(id: Int): Team? {
         return repository.getTeamById(id)
+    }
+
+    private fun deleteFile(path: String?) {
+        if (path != null) {
+            val file = java.io.File(path)
+            if (file.exists()) {
+                file.delete()
+            }
+        }
     }
 }

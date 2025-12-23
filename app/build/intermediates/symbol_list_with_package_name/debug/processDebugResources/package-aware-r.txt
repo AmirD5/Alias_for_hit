@@ -92,6 +92,7 @@ animator nav_default_exit_anim
 animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
 array team_colors
+array team_colors_db
 attr SharedValue
 attr SharedValueId
 attr action

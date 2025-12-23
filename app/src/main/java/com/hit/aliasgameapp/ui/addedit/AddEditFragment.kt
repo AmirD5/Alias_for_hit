@@ -29,6 +29,9 @@ class AddEditFragment : Fragment() {
     private var currentPhotoPath: String? = null
     private var editingTeamId: Int = -1
 
+    private var originalImagePath: String? = null
+    private var isSaved: Boolean = false
+
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let { copyImageToInternalStorage(it) }
     }
@@ -60,13 +63,17 @@ class AddEditFragment : Fragment() {
             team?.let {
                 binding.etName.setText(it.name)
                 binding.etMembers.setText(it.members)
-                // Set spinner selection based on saved color
-                val colorIndex = colorArray.indexOf(it.color)
+                val dbColors = resources.getStringArray(R.array.team_colors_db)
+                var colorIndex = dbColors.indexOf(it.color)
+                if (colorIndex == -1) {
+                    colorIndex = colorArray.indexOf(it.color)
+                }
                 if (colorIndex >= 0) {
                     binding.spinnerColor.setSelection(colorIndex)
                 }
                 binding.etNotes.setText(it.notes)
                 currentPhotoPath = it.imagePath
+                originalImagePath = it.imagePath
                 }
             }
         if (currentPhotoPath != null) {
@@ -79,7 +86,9 @@ class AddEditFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             val name = binding.etName.text.toString().trim()
-            val color = binding.spinnerColor.selectedItem.toString()
+            val dbColors = resources.getStringArray(R.array.team_colors_db)
+            val selectedPosition = binding.spinnerColor.selectedItemPosition
+            val color = if (selectedPosition in dbColors.indices) dbColors[selectedPosition] else "Black"
             val notes = binding.etNotes.text.toString().trim()
             val members = binding.etMembers.text.toString().trim()
 
@@ -110,10 +119,17 @@ class AddEditFragment : Fragment() {
             }
 
             findNavController().navigateUp()
+            isSaved = true
         }
     }
 
     private fun copyImageToInternalStorage(uri: Uri) {
+        if (currentPhotoPath != null && currentPhotoPath != originalImagePath) {
+            val oldFile = File(currentPhotoPath!!)
+            if (oldFile.exists()) {
+                oldFile.delete()
+            }
+        }
         try {
             val inputStream = requireContext().contentResolver.openInputStream(uri)
             val file = File(requireContext().filesDir, "team_photo_${System.currentTimeMillis()}.jpg")
@@ -128,6 +144,12 @@ class AddEditFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        if (!isSaved && currentPhotoPath != null && currentPhotoPath != originalImagePath) {
+            val tmpFile = File(currentPhotoPath!!)
+            if (tmpFile.exists()) {
+                tmpFile.delete()
+            }
+        }
         _binding = null
     }
 

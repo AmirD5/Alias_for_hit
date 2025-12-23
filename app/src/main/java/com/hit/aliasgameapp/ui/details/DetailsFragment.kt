@@ -46,9 +46,20 @@ class DetailsFragment : Fragment() {
         }
 
         binding.tvDetailName.text = team.name
-        binding.tvDetailColor.text = team.color.ifEmpty { getString(R.string.no_color_set) }
         binding.tvDetailNotes.text = team.notes.ifEmpty { getString(R.string.no_notes) }
         binding.tvDetailMembers.text = team.members.ifEmpty { getString(R.string.no_members_listed) }
+
+        val dbColors = resources.getStringArray(R.array.team_colors_db)
+        val displayColors = resources.getStringArray(R.array.team_colors)
+        val colorIndex = dbColors.indexOf(team.color)
+
+        val displayColorName = if (colorIndex != -1 && colorIndex < displayColors.size) {
+            displayColors[colorIndex]
+        } else {
+            team.color // fallback
+        }
+
+        binding.tvDetailColor.text = displayColorName.ifEmpty { getString(R.string.no_color_set) }
 
         // Apply the team color to the team name
         val colorResId = getColorResourceId(team.color)

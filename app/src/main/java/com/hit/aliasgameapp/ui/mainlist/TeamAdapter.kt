@@ -30,7 +30,20 @@ class TeamAdapter(
     inner class ViewHolder(private val binding: ItemTeamBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(team: Team) {
             binding.tvName.text = team.name
-            binding.tvColor.text = team.color.ifEmpty { "No color" }
+
+            val context = binding.root.context
+            val dbColors = context.resources.getStringArray(R.array.team_colors_db)
+            val displayColors = context.resources.getStringArray(R.array.team_colors)
+            val colorIndex = dbColors.indexOf(team.color)
+
+            val displayColorName = if (colorIndex != -1 && colorIndex < displayColors.size) {
+                displayColors[colorIndex]
+            } else {
+                team.color
+            }
+
+            binding.tvColor.text = displayColorName.ifEmpty { "No color" }
+
 
             // Apply the team color to the team name and color indicator
             val colorResId = getColorResourceId(team.color)

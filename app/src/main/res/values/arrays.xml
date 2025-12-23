@@ -10,5 +10,16 @@
         <item>Pink</item>
         <item>Teal</item>
     </string-array>
+
+    <string-array name="team_colors_db" translatable="false">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Teal</item>
+    </string-array>
 </resources>
 

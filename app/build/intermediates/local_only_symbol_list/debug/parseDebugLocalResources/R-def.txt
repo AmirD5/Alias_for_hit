@@ -1,6 +1,7 @@
 R_DEF: Internal format may change without notice
 local
 array team_colors
+array team_colors_db
 color black
 color team_blue
 color team_green
