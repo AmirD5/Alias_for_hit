@@ -3817,6 +3817,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btnAbout
 id btn_add_team
 id btn_delete
 id btn_edit
@@ -4409,6 +4410,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_about
 layout fragment_add_edit
 layout fragment_details
 layout fragment_main_list
@@ -4482,6 +4484,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph
 plurals mtrl_badge_content_description
+string a_good_explanation_the_big_yellow_star_that_lights_us_up_during_the_day_and_warms_the_earth
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -4511,6 +4514,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string add_a_team
 string add_card
+string alias_how_to_play
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4543,10 +4547,14 @@ string edit
 string error_a11y_label
 string error_icon_content_description
 string error_occurred
+string example
+string explain_as_many_words
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string failed_to_save_photo
+string forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word
+string goal
 string green
 string group_members
 string group_members_
@@ -4555,7 +4563,13 @@ string hint_category
 string hint_hint
 string hint_word
 string icon_content_description
+string it_is_forbidden_to_say
+string it_is_forbidden_to_say_the_word_itself_or_part_of_it_for_example_the_word_football_cannot_be_said_ball
+string it_is_forbidden_to_say_words_from_the_same_root_it_is_permissible_to_use_antonyms_synonyms_and_associations
+string it_is_forbidden_to_use_translations_into_other_languages
+string it_is_permissible_to_use_antonyms_synonyms_and_associations
 string item_view_role_description
+string laws_and_prohibitions
 string m3_exceed_max_badge_text_suffix
 string m3_loading_indicator_content_description
 string m3_ref_typeface_brand_medium
@@ -4693,6 +4707,7 @@ string status_bar_notification_info_overflow
 string teal
 string team_name_is_required
 string the_teams_are
+string the_word_sun
 string title_add_card
 string title_card_details
 string title_card_list
