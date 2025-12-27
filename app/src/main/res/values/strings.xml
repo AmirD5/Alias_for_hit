@@ -64,4 +64,8 @@
     <string name="it_is_forbidden_to_say_words_from_the_same_root_it_is_permissible_to_use_antonyms_synonyms_and_associations">• It is forbidden to say words from the same root.</string>
     <string name="it_is_permissible_to_use_antonyms_synonyms_and_associations">• It is permissible to use antonyms, synonyms and associations.</string>
     <string name="goal">Goal</string>
+
+    <!-- Language Toggle -->
+    <string name="language_toggle">עברית</string>
+    <string name="current_language">en</string>
 </resources>

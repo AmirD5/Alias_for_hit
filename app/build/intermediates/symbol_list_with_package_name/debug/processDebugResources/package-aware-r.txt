@@ -3821,6 +3821,7 @@ id btnAbout
 id btn_add_team
 id btn_delete
 id btn_edit
+id btn_language_toggle
 id btn_pick_image
 id btn_save
 id buttonPanel
@@ -4539,6 +4540,7 @@ string character_counter_pattern
 string choose_team_color
 string clear_text_end_icon_content_description
 string confirm_delete_message
+string current_language
 string delete
 string delete_card
 string deleted_successfully
@@ -4569,6 +4571,7 @@ string it_is_forbidden_to_say_words_from_the_same_root_it_is_permissible_to_use_
 string it_is_forbidden_to_use_translations_into_other_languages
 string it_is_permissible_to_use_antonyms_synonyms_and_associations
 string item_view_role_description
+string language_toggle
 string laws_and_prohibitions
 string m3_exceed_max_badge_text_suffix
 string m3_loading_indicator_content_description

@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.databinding.FragmentMainListBinding
 import com.hit.aliasgameapp.viewmodel.TeamViewModel
-
+import com.hit.aliasgameapp.util.LocaleHelper
 class MainListFragment : Fragment() {
 
     private var _binding: FragmentMainListBinding? = null
@@ -57,6 +56,11 @@ class MainListFragment : Fragment() {
 
         binding.btnAbout.setOnClickListener {
             findNavController().navigate(R.id.aboutFragment)
+        }
+
+        binding.btnLanguageToggle.setOnClickListener {
+            LocaleHelper.toggleLanguage(requireContext())
+            requireActivity().recreate()
         }
     }
 

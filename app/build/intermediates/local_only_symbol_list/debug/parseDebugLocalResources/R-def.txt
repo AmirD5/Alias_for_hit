@@ -20,6 +20,7 @@ id btnAbout
 id btn_add_team
 id btn_delete
 id btn_edit
+id btn_language_toggle
 id btn_pick_image
 id btn_save
 id color_indicator
@@ -67,6 +68,7 @@ string cancel
 string change_image
 string choose_team_color
 string confirm_delete_message
+string current_language
 string delete
 string delete_card
 string deleted_successfully
@@ -88,6 +90,7 @@ string it_is_forbidden_to_say_the_word_itself_or_part_of_it_for_example_the_word
 string it_is_forbidden_to_say_words_from_the_same_root_it_is_permissible_to_use_antonyms_synonyms_and_associations
 string it_is_forbidden_to_use_translations_into_other_languages
 string it_is_permissible_to_use_antonyms_synonyms_and_associations
+string language_toggle
 string laws_and_prohibitions
 string no_cards
 string no_color_set

@@ -4,7 +4,7 @@
             "outputFile": "com.hit.aliasgameapp-mergeDebugResources-49:/values-h480dp-v13/values-h480dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Noam\\.gradle\\caches\\8.13\\transforms\\788e46db8898540e9a6ab523d7f68005\\transformed\\material-1.13.0\\res\\values-h480dp-v13\\values-h480dp-v13.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\8.13\\transforms\\788e46db8898540e9a6ab523d7f68005\\transformed\\material-1.13.0\\res\\values-h480dp-v13\\values-h480dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

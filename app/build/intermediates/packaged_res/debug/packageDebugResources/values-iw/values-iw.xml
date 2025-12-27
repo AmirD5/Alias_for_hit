@@ -20,6 +20,7 @@
     <string name="change_image">שנה את תמונת הקבוצה</string>
     <string name="choose_team_color">בחר את צבע הקבוצה:</string>
     <string name="confirm_delete_message">אתה בטוח שאתה רוצה למחוק את הקבוצה הזו? לא ניתן לבטל שינוי זה</string>
+    <string name="current_language">iw</string>
     <string name="delete">מחק</string>
     <string name="delete_card">מחק קבוצה</string>
     <string name="deleted_successfully">הקבוצה נמחקה</string>
@@ -41,6 +42,7 @@
     <string name="it_is_forbidden_to_say_words_from_the_same_root_it_is_permissible_to_use_antonyms_synonyms_and_associations">• אסור לומר מילים מאותו שורש.</string>
     <string name="it_is_forbidden_to_use_translations_into_other_languages">• אסור להשתמש בתרגומים לשפות אחרות.</string>
     <string name="it_is_permissible_to_use_antonyms_synonyms_and_associations">• מותר להשתמש באנטונימים, מילים נרדפות ואסוציאציות.</string>
+    <string name="language_toggle">English</string>
     <string name="laws_and_prohibitions">חוקים ואיסורים</string>
     <string name="no_cards">אין קבוצות עדיין, לחץ \"הוסף קבוצה\" כדי להוסיף את הקבוצה הראשונה שלך!</string>
     <string name="no_color_set">צבע לא נבחר</string>
