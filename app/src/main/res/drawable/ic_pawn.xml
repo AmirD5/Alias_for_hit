@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Pawn chess piece icon -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M12,2C10.9,2 10,2.9 10,4C10,5.1 10.9,6 12,6C13.1,6 14,5.1 14,4C14,2.9 13.1,2 12,2ZM12,7C10.34,7 9,8.34 9,10C9,10.74 9.24,11.42 9.64,12L8,14L8,22L16,22L16,14L14.36,12C14.76,11.42 15,10.74 15,10C15,8.34 13.66,7 12,7Z" />
+</vector>
+

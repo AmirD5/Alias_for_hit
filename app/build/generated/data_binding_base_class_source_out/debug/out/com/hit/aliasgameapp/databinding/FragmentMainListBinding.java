@@ -32,6 +32,9 @@ public final class FragmentMainListBinding implements ViewBinding {
   public final Button btnLanguageToggle;
 
   @NonNull
+  public final Button btnViewBoard;
+
+  @NonNull
   public final RecyclerView recyclerView;
 
   @NonNull
@@ -45,12 +48,14 @@ public final class FragmentMainListBinding implements ViewBinding {
 
   private FragmentMainListBinding(@NonNull LinearLayout rootView,
       @NonNull FloatingActionButton btnAbout, @NonNull Button btnAddTeam,
-      @NonNull Button btnLanguageToggle, @NonNull RecyclerView recyclerView,
-      @NonNull TextView tvEmpty, @NonNull TextView tvTeamsHeader, @NonNull TextView tvWelcome) {
+      @NonNull Button btnLanguageToggle, @NonNull Button btnViewBoard,
+      @NonNull RecyclerView recyclerView, @NonNull TextView tvEmpty,
+      @NonNull TextView tvTeamsHeader, @NonNull TextView tvWelcome) {
     this.rootView = rootView;
     this.btnAbout = btnAbout;
     this.btnAddTeam = btnAddTeam;
     this.btnLanguageToggle = btnLanguageToggle;
+    this.btnViewBoard = btnViewBoard;
     this.recyclerView = recyclerView;
     this.tvEmpty = tvEmpty;
     this.tvTeamsHeader = tvTeamsHeader;
@@ -102,6 +107,12 @@ public final class FragmentMainListBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_view_board;
+      Button btnViewBoard = ViewBindings.findChildViewById(rootView, id);
+      if (btnViewBoard == null) {
+        break missingId;
+      }
+
       id = R.id.recycler_view;
       RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
       if (recyclerView == null) {
@@ -127,7 +138,7 @@ public final class FragmentMainListBinding implements ViewBinding {
       }
 
       return new FragmentMainListBinding((LinearLayout) rootView, btnAbout, btnAddTeam,
-          btnLanguageToggle, recyclerView, tvEmpty, tvTeamsHeader, tvWelcome);
+          btnLanguageToggle, btnViewBoard, recyclerView, tvEmpty, tvTeamsHeader, tvWelcome);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

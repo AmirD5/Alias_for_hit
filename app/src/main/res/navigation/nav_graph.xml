@@ -34,4 +34,10 @@
     android:name="com.hit.aliasgameapp.ui.about.AboutFragment"
     android:label="About"
     tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/gameBoardFragment"
+        android:name="com.hit.aliasgameapp.ui.gameboard.GameBoardFragment"
+        android:label="@string/game_board"
+        tools:layout="@layout/fragment_game_board" />
 </navigation>

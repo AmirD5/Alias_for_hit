@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.hit.aliasgameapp.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -25,7 +25,7 @@ public final class FragmentDetailsBinding implements ViewBinding {
   public final Button btnEdit;
 
   @NonNull
-  public final ImageView ivDetailImage;
+  public final ShapeableImageView ivDetailImage;
 
   @NonNull
   public final TextView tvDetailColor;
@@ -40,7 +40,7 @@ public final class FragmentDetailsBinding implements ViewBinding {
   public final TextView tvDetailNotes;
 
   private FragmentDetailsBinding(@NonNull ScrollView rootView, @NonNull Button btnEdit,
-      @NonNull ImageView ivDetailImage, @NonNull TextView tvDetailColor,
+      @NonNull ShapeableImageView ivDetailImage, @NonNull TextView tvDetailColor,
       @NonNull TextView tvDetailMembers, @NonNull TextView tvDetailName,
       @NonNull TextView tvDetailNotes) {
     this.rootView = rootView;
@@ -86,7 +86,7 @@ public final class FragmentDetailsBinding implements ViewBinding {
       }
 
       id = R.id.iv_detail_image;
-      ImageView ivDetailImage = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView ivDetailImage = ViewBindings.findChildViewById(rootView, id);
       if (ivDetailImage == null) {
         break missingId;
       }

@@ -20,7 +20,13 @@
         <item>Pink</item>
         <item>Teal</item>
     </string-array>
+    <color name="accent">#FF9800</color>
+    <color name="background">#F5F5F5</color>
     <color name="black">#FF000000</color>
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="surface">#FFFFFF</color>
     <color name="team_blue">#2196F3</color>
     <color name="team_green">#4CAF50</color>
     <color name="team_orange">#FF9800</color>
@@ -29,6 +35,8 @@
     <color name="team_red">#F44336</color>
     <color name="team_teal">#009688</color>
     <color name="team_yellow">#FFEB3B</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
     <color name="white">#FFFFFFFF</color>
     <string name="a_good_explanation_the_big_yellow_star_that_lights_us_up_during_the_day_and_warms_the_earth">✅ A good explanation: \'The big, yellow star that lights us up during the day and warms the Earth.\'\'</string>
     <string name="add_a_team">Add a team</string>
@@ -39,7 +47,9 @@
     <string name="cancel">Cancel</string>
     <string name="change_image">Change Team Photo</string>
     <string name="choose_team_color">Choose Team Color:</string>
+    <string name="close">Close</string>
     <string name="confirm_delete_message">Are you sure you want to delete this team? This cannot be undone.</string>
+    <string name="current_describer_hint">👉 ⭐ indicates the current describer</string>
     <string name="current_language">en</string>
     <string name="delete">Delete</string>
     <string name="delete_card">Delete Team</string>
@@ -50,10 +60,11 @@
     <string name="explain_as_many_words">Explain as many words as possible to your group members in a limited time, without using the word itself!</string>
     <string name="failed_to_save_photo">Failed to save photo</string>
     <string name="forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word">❌Forbidden explanation: \'We see this star on a sunny day.\' (use of the root of the word).</string>
+    <string name="game_board">Game Board</string>
     <string name="goal">Goal</string>
     <string name="green">Green</string>
     <string name="group_members">Group members</string>
-    <string name="group_members_">Group members</string>
+    <string name="group_members_">Group members (separate with commas)</string>
     <string name="hint_category">Team Color (optional)</string>
     <string name="hint_hint">Notes (optional)</string>
     <string name="hint_word">Team Name (required)</string>
@@ -64,6 +75,9 @@
     <string name="it_is_permissible_to_use_antonyms_synonyms_and_associations">• It is permissible to use antonyms, synonyms and associations.</string>
     <string name="language_toggle">עברית</string>
     <string name="laws_and_prohibitions">Laws and prohibitions</string>
+    <string name="legend">Legend</string>
+    <string name="legend_click_pawn">Click on a pawn to see team members</string>
+    <string name="legend_description">Numbers 1-8 represent the words on the card to describe</string>
     <string name="no_cards">No teams yet. Click "Add a team" to add your first team!</string>
     <string name="no_color_set">No color set</string>
     <string name="no_members_listed">No members listed</string>
@@ -78,18 +92,38 @@
     <string name="save">Save</string>
     <string name="saved_successfully">Team saved successfully</string>
     <string name="teal">Teal</string>
+    <string name="team">Team</string>
+    <string name="team_members">Team Members:</string>
     <string name="team_name_is_required">Team name is required</string>
+    <string name="team_pawn">Team Pawn</string>
     <string name="the_teams_are">The Teams Are:</string>
     <string name="the_word_sun">The word: Sun</string>
     <string name="title_add_card">Add New Team</string>
     <string name="title_card_details">Team Details</string>
     <string name="title_card_list">My Teams</string>
     <string name="title_edit_card">Edit Team</string>
+    <string name="view_board">View Board</string>
     <string name="welcome_to_alias">Welcome To Alias</string>
     <string name="yellow">Yellow</string>
+    <string name="you_win">You Win!</string>
+    <string name="zoom_in">Zoom In</string>
+    <string name="zoom_out">Zoom Out</string>
     <style name="Base.Theme.AliasGameApp" parent="Theme.Material3.DayNight.NoActionBar">
-        
-        
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
     <style name="Theme.AliasGameApp" parent="Base.Theme.AliasGameApp"/>
 </resources>

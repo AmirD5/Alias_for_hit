@@ -1,10 +1,19 @@
 package com.hit.aliasgameapp.repository
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import com.hit.aliasgameapp.data.dao.TeamDao
+import com.hit.aliasgameapp.data.database.AppDatabase
 import com.hit.aliasgameapp.data.model.Team
 
-class TeamRepository(private val dao: TeamDao) {
+class TeamRepository(context: Context) {
+
+    private val dao: TeamDao
+
+    init {
+        val database = AppDatabase.getDatabase(context)
+        dao = database.teamDao()
+    }
 
     val allTeams: LiveData<List<Team>> = dao.getAllTeams()
 
@@ -14,5 +23,5 @@ class TeamRepository(private val dao: TeamDao) {
 
     suspend fun delete(team: Team) = dao.delete(team)
 
-    fun getTeamById(id: Int): Team? = dao.getTeamById(id)
+    suspend fun getTeamById(id: Int) = dao.getTeamById(id)
 }

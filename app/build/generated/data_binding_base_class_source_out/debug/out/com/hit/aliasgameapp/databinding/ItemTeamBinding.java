@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.hit.aliasgameapp.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -28,7 +28,7 @@ public final class ItemTeamBinding implements ViewBinding {
   public final View colorIndicator;
 
   @NonNull
-  public final ImageView ivImage;
+  public final ShapeableImageView ivImage;
 
   @NonNull
   public final TextView tvColor;
@@ -37,7 +37,7 @@ public final class ItemTeamBinding implements ViewBinding {
   public final TextView tvName;
 
   private ItemTeamBinding(@NonNull CardView rootView, @NonNull ImageButton btnDelete,
-      @NonNull View colorIndicator, @NonNull ImageView ivImage, @NonNull TextView tvColor,
+      @NonNull View colorIndicator, @NonNull ShapeableImageView ivImage, @NonNull TextView tvColor,
       @NonNull TextView tvName) {
     this.rootView = rootView;
     this.btnDelete = btnDelete;
@@ -87,7 +87,7 @@ public final class ItemTeamBinding implements ViewBinding {
       }
 
       id = R.id.iv_image;
-      ImageView ivImage = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView ivImage = ViewBindings.findChildViewById(rootView, id);
       if (ivImage == null) {
         break missingId;
       }

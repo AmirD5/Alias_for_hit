@@ -11,7 +11,7 @@ interface TeamDao {
     fun getAllTeams(): LiveData<List<Team>>
 
     @Query("SELECT * FROM teams WHERE id = :id")
-    fun getTeamById(id: Int): Team?
+    suspend fun getTeamById(id: Int): Team?
 
     @Insert
     suspend fun insert(team: Team)

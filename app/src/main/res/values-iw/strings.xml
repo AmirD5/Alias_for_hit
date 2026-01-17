@@ -49,7 +49,7 @@
     <string name="green">ירוק</string>
     <string name="blue">כחול</string>
     <string name="red">אדום</string>
-    <string name="group_members_">משתתפי הקבוצה</string>
+    <string name="group_members_">משתתפי הקבוצה (הפרד באמצעות פסיקים)</string>
     <string name="failed_to_save_photo">נכשל בניסיון לשמור תמונה</string>
     <string name="team_name_is_required">שם הקבוצה הכרחי</string>
     <string name="alias_how_to_play">אליאס - איך משחקים?</string>
@@ -69,4 +69,19 @@
     <!-- Language Toggle -->
     <string name="language_toggle">English</string>
     <string name="current_language">iw</string>
+
+    <!-- Game Board -->
+    <string name="game_board">לוח המשחק</string>
+    <string name="team_pawn">כלי קבוצה</string>
+    <string name="legend">מקרא</string>
+    <string name="legend_description">המספרים 1-8 מייצגים את המילים בכרטיס שצריך לתאר</string>
+    <string name="legend_click_pawn">לחץ על כלי כדי לראות את חברי הקבוצה</string>
+    <string name="team_members">חברי הקבוצה:</string>
+    <string name="current_describer_hint">👉 ⭐ מציין את המתאר הנוכחי</string>
+    <string name="close">סגור</string>
+    <string name="view_board">צפה בלוח</string>
+    <string name="you_win">ניצחת!</string>
+    <string name="zoom_in">התקרב</string>
+    <string name="zoom_out">התרחק</string>
+    <string name="team">קבוצה</string>
 </resources>

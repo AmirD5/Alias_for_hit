@@ -49,6 +49,10 @@ class MainListFragment : Fragment() {
             findNavController().navigate(R.id.addEditFragment, bundle)
         }
 
+        binding.btnViewBoard.setOnClickListener {
+            findNavController().navigate(R.id.gameBoardFragment)
+        }
+
         viewModel.allTeams.observe(viewLifecycleOwner) { teams ->
             adapter.submitList(teams)
             binding.tvEmpty.visibility = if (teams.isEmpty()) View.VISIBLE else View.GONE

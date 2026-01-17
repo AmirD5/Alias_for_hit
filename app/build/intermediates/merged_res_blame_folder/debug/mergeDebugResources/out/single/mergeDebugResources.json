@@ -4,48 +4,32 @@
         "source": "com.hit.aliasgameapp-main-53:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
         "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_about.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/layout/fragment_about.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_main_list.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_main_list.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "com.hit.aliasgameapp-main-53:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_activity_main.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_main_list.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_main_list.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_launcher_background.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_dialog_team_tooltip.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/dialog_team_tooltip.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/xml_backup_rules.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/xml/backup_rules.xml"
+        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_pawn.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_pawn.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_launcher_foreground.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_details.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_details.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
@@ -72,16 +56,80 @@
         "source": "com.hit.aliasgameapp-main-53:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space_win.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space_win.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/drawable_pawn_background.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/drawable/pawn_background.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.hit.aliasgameapp-main-53:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_activity_main.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team_pawn.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/item_team_pawn.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team_indicator.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/item_team_indicator.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/xml_backup_rules.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_details.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_details.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space_special.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space_special.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_minus.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_minus.xml"
+    },
+    {
         "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/layout/item_team.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/drawable_circle_space_background.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/drawable/circle_space_background.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_add_edit.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/layout/fragment_add_edit.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_game_board.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_game_board.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/drawable_connecting_dot.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/drawable/connecting_dot.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",

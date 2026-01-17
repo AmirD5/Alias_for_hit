@@ -11,11 +11,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.data.model.Team
 import com.hit.aliasgameapp.databinding.FragmentAddEditBinding
 import com.hit.aliasgameapp.viewmodel.TeamViewModel
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 
@@ -59,23 +61,25 @@ class AddEditFragment : Fragment() {
         binding.spinnerColor.adapter = colorAdapter
 
         if (savedInstanceState == null && editingTeamId > 0) {
-            val team = viewModel.getTeamById(editingTeamId)
-            team?.let {
-                binding.etName.setText(it.name)
-                binding.etMembers.setText(it.members)
-                val dbColors = resources.getStringArray(R.array.team_colors_db)
-                var colorIndex = dbColors.indexOf(it.color)
-                if (colorIndex == -1) {
-                    colorIndex = colorArray.indexOf(it.color)
-                }
-                if (colorIndex >= 0) {
-                    binding.spinnerColor.setSelection(colorIndex)
-                }
-                binding.etNotes.setText(it.notes)
-                currentPhotoPath = it.imagePath
-                originalImagePath = it.imagePath
+            lifecycleScope.launch {
+                val team = viewModel.getTeamById(editingTeamId)
+                team?.let {
+                    binding.etName.setText(it.name)
+                    binding.etMembers.setText(it.members)
+                    val dbColors = resources.getStringArray(R.array.team_colors_db)
+                    var colorIndex = dbColors.indexOf(it.color)
+                    if (colorIndex == -1) {
+                        colorIndex = colorArray.indexOf(it.color)
+                    }
+                    if (colorIndex >= 0) {
+                        binding.spinnerColor.setSelection(colorIndex)
+                    }
+                    binding.etNotes.setText(it.notes)
+                    currentPhotoPath = it.imagePath
+                    originalImagePath = it.imagePath
                 }
             }
+        }
         if (currentPhotoPath != null) {
             binding.ivCardImage.setImageURI(currentPhotoPath!!.toUri())
         }

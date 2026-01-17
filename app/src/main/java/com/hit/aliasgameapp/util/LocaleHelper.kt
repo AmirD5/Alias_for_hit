@@ -8,7 +8,6 @@ import java.util.Locale
 object LocaleHelper {
     private const val PREFS_NAME = "language_prefs"
     private const val KEY_LANGUAGE = "selected_language"
-    private const val DEFAULT_LANGUAGE = "en" // English as default
 
     /**
      * Set the app locale
@@ -19,11 +18,24 @@ object LocaleHelper {
     }
 
     /**
-     * Get the saved language preference
+     * Get the saved language preference, or detect system language if not set
      */
     fun getLanguage(context: Context): String {
         val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(KEY_LANGUAGE, DEFAULT_LANGUAGE) ?: DEFAULT_LANGUAGE
+
+        // Check if language was already set by user
+        if (!prefs.contains(KEY_LANGUAGE)) {
+            // First time - detect system language
+            val systemLanguage = Locale.getDefault().language
+            val defaultLanguage = if (systemLanguage == "he" || systemLanguage == "iw") {
+                "he" // Hebrew
+            } else {
+                "en" // English as fallback
+            }
+            return defaultLanguage
+        }
+
+        return prefs.getString(KEY_LANGUAGE, "en") ?: "en"
     }
 
     /**

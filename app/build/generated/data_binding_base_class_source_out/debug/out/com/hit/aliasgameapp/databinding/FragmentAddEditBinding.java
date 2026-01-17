@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -13,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hit.aliasgameapp.R;
@@ -40,7 +40,7 @@ public final class FragmentAddEditBinding implements ViewBinding {
   public final TextInputEditText etNotes;
 
   @NonNull
-  public final ImageView ivCardImage;
+  public final ShapeableImageView ivCardImage;
 
   @NonNull
   public final Spinner spinnerColor;
@@ -60,7 +60,7 @@ public final class FragmentAddEditBinding implements ViewBinding {
   private FragmentAddEditBinding(@NonNull ScrollView rootView, @NonNull Button btnPickImage,
       @NonNull Button btnSave, @NonNull TextInputEditText etMembers,
       @NonNull TextInputEditText etName, @NonNull TextInputEditText etNotes,
-      @NonNull ImageView ivCardImage, @NonNull Spinner spinnerColor,
+      @NonNull ShapeableImageView ivCardImage, @NonNull Spinner spinnerColor,
       @NonNull TextInputLayout tilMembers, @NonNull TextInputLayout tilName,
       @NonNull TextInputLayout tilNotes, @NonNull TextView tvColorLabel) {
     this.rootView = rootView;
@@ -135,7 +135,7 @@ public final class FragmentAddEditBinding implements ViewBinding {
       }
 
       id = R.id.iv_card_image;
-      ImageView ivCardImage = ViewBindings.findChildViewById(rootView, id);
+      ShapeableImageView ivCardImage = ViewBindings.findChildViewById(rootView, id);
       if (ivCardImage == null) {
         break missingId;
       }

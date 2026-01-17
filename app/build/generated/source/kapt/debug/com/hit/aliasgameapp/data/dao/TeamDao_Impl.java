@@ -209,9 +209,9 @@ public final class TeamDao_Impl implements TeamDao {
   }
 
   @Override
-  public Team getTeamById(final int id) {
+  public Object getTeamById(final int id, final Continuation<? super Team> $completion) {
     final String _sql = "SELECT * FROM teams WHERE id = ?";
-    return DBUtil.performBlocking(__db, true, false, (_connection) -> {
+    return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
       try {
         int _argIndex = 1;
@@ -264,7 +264,7 @@ public final class TeamDao_Impl implements TeamDao {
       } finally {
         _stmt.close();
       }
-    });
+    }, $completion);
   }
 
   @NonNull

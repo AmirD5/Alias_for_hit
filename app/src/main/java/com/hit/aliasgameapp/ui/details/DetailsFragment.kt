@@ -9,8 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hit.aliasgameapp.R
+import kotlinx.coroutines.launch
 import com.hit.aliasgameapp.databinding.FragmentDetailsBinding
 import com.hit.aliasgameapp.viewmodel.TeamViewModel
 
@@ -40,44 +42,46 @@ class DetailsFragment : Fragment() {
             return
         }
 
-        val team = viewModel.getTeamById(teamId) ?: run {
-            findNavController().navigateUp()
-            return
-        }
-
-        binding.tvDetailName.text = team.name
-        binding.tvDetailNotes.text = team.notes.ifEmpty { getString(R.string.no_notes) }
-        binding.tvDetailMembers.text = team.members.ifEmpty { getString(R.string.no_members_listed) }
-
-        val dbColors = resources.getStringArray(R.array.team_colors_db)
-        val displayColors = resources.getStringArray(R.array.team_colors)
-        val colorIndex = dbColors.indexOf(team.color)
-
-        val displayColorName = if (colorIndex != -1 && colorIndex < displayColors.size) {
-            displayColors[colorIndex]
-        } else {
-            team.color // fallback
-        }
-
-        binding.tvDetailColor.text = displayColorName.ifEmpty { getString(R.string.no_color_set) }
-
-        // Apply the team color to the team name
-        val colorResId = getColorResourceId(team.color)
-        val color = ContextCompat.getColor(requireContext(), colorResId)
-        binding.tvDetailName.setTextColor(color)
-
-        if (team.imagePath != null) {
-            binding.ivDetailImage.setImageURI(team.imagePath.toUri())
-            binding.ivDetailImage.setOnClickListener {
-                showFullImage(team.imagePath.toUri())
+        lifecycleScope.launch {
+            val team = viewModel.getTeamById(teamId) ?: run {
+                findNavController().navigateUp()
+                return@launch
             }
-        } else {
-            binding.ivDetailImage.setImageResource(android.R.drawable.ic_menu_gallery)
-        }
 
-        binding.btnEdit.setOnClickListener {
-            val bundle = Bundle().apply { putInt("teamId", teamId) }
-            findNavController().navigate(R.id.addEditFragment, bundle)
+            binding.tvDetailName.text = team.name
+            binding.tvDetailNotes.text = team.notes.ifEmpty { getString(R.string.no_notes) }
+            binding.tvDetailMembers.text = team.members.ifEmpty { getString(R.string.no_members_listed) }
+
+            val dbColors = resources.getStringArray(R.array.team_colors_db)
+            val displayColors = resources.getStringArray(R.array.team_colors)
+            val colorIndex = dbColors.indexOf(team.color)
+
+            val displayColorName = if (colorIndex != -1 && colorIndex < displayColors.size) {
+                displayColors[colorIndex]
+            } else {
+                team.color // fallback
+            }
+
+            binding.tvDetailColor.text = displayColorName.ifEmpty { getString(R.string.no_color_set) }
+
+            // Apply the team color to the team name
+            val colorResId = getColorResourceId(team.color)
+            val color = ContextCompat.getColor(requireContext(), colorResId)
+            binding.tvDetailName.setTextColor(color)
+
+            if (team.imagePath != null) {
+                binding.ivDetailImage.setImageURI(team.imagePath.toUri())
+                binding.ivDetailImage.setOnClickListener {
+                    showFullImage(team.imagePath.toUri())
+                }
+            } else {
+                binding.ivDetailImage.setImageResource(android.R.drawable.ic_menu_gallery)
+            }
+
+            binding.btnEdit.setOnClickListener {
+                val bundle = Bundle().apply { putInt("teamId", teamId) }
+                findNavController().navigate(R.id.addEditFragment, bundle)
+            }
         }
     }
 

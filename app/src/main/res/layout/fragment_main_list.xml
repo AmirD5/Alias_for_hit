@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     android:padding="16dp">
 
     <TextView
@@ -14,7 +15,7 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/primary"
         android:layout_marginBottom="8dp" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/the_teams_are"
         android:textSize="20sp"
+        android:textColor="@color/text_primary"
         android:gravity="center"
         android:layout_marginBottom="16dp" />
 
@@ -32,6 +34,15 @@
         android:layout_height="wrap_content"
         android:text="@string/add_a_team"
         android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btn_view_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_board"
+        android:textSize="16sp"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_marginBottom="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView

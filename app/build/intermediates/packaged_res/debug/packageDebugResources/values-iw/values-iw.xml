@@ -19,7 +19,9 @@
     <string name="cancel">בטל</string>
     <string name="change_image">שנה את תמונת הקבוצה</string>
     <string name="choose_team_color">בחר את צבע הקבוצה:</string>
+    <string name="close">סגור</string>
     <string name="confirm_delete_message">אתה בטוח שאתה רוצה למחוק את הקבוצה הזו? לא ניתן לבטל שינוי זה</string>
+    <string name="current_describer_hint">👉 ⭐ מציין את המתאר הנוכחי</string>
     <string name="current_language">iw</string>
     <string name="delete">מחק</string>
     <string name="delete_card">מחק קבוצה</string>
@@ -30,10 +32,11 @@
     <string name="explain_as_many_words">להסביר לחברי הקבוצה שלכם כמה שיותר מילים בזמן מוגבל, מבלי להשתמש במילה עצמה</string>
     <string name="failed_to_save_photo">נכשל בניסיון לשמור תמונה</string>
     <string name="forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word">❌ הסבר פסול: \'אנחנו רואים את הכוכב הזה ביום שמשי.\' (שימוש של שורש המילה).</string>
+    <string name="game_board">לוח המשחק</string>
     <string name="goal">מטרה</string>
     <string name="green">ירוק</string>
     <string name="group_members">משתתפי הקבוצה</string>
-    <string name="group_members_">משתתפי הקבוצה</string>
+    <string name="group_members_">משתתפי הקבוצה (הפרד באמצעות פסיקים)</string>
     <string name="hint_category">צבע הקבוצה (אופציונלי)</string>
     <string name="hint_hint">הערות (אופציונלי)</string>
     <string name="hint_word">שם הקבוצה (הכרחי)</string>
@@ -44,6 +47,9 @@
     <string name="it_is_permissible_to_use_antonyms_synonyms_and_associations">• מותר להשתמש באנטונימים, מילים נרדפות ואסוציאציות.</string>
     <string name="language_toggle">English</string>
     <string name="laws_and_prohibitions">חוקים ואיסורים</string>
+    <string name="legend">מקרא</string>
+    <string name="legend_click_pawn">לחץ על כלי כדי לראות את חברי הקבוצה</string>
+    <string name="legend_description">המספרים 1-8 מייצגים את המילים בכרטיס שצריך לתאר</string>
     <string name="no_cards">אין קבוצות עדיין, לחץ \"הוסף קבוצה\" כדי להוסיף את הקבוצה הראשונה שלך!</string>
     <string name="no_color_set">צבע לא נבחר</string>
     <string name="no_members_listed">לא נרשמו חברים</string>
@@ -58,13 +64,20 @@
     <string name="save">שמור</string>
     <string name="saved_successfully">הקבוצה נשמרה בהצלחה</string>
     <string name="teal">טורקיז</string>
+    <string name="team">קבוצה</string>
+    <string name="team_members">חברי הקבוצה:</string>
     <string name="team_name_is_required">שם הקבוצה הכרחי</string>
+    <string name="team_pawn">כלי קבוצה</string>
     <string name="the_teams_are">הקבוצות הן:</string>
     <string name="the_word_sun">המילה: שמש</string>
     <string name="title_add_card">הוסף קבוצה חדשה</string>
     <string name="title_card_details">מאפייני הקבוצה</string>
     <string name="title_card_list">הקבוצות שלי</string>
     <string name="title_edit_card">ערוך קבוצה</string>
+    <string name="view_board">צפה בלוח</string>
     <string name="welcome_to_alias">ברוך הבא לאליאס</string>
     <string name="yellow">צהוב</string>
+    <string name="you_win">ניצחת!</string>
+    <string name="zoom_in">התקרב</string>
+    <string name="zoom_out">התרחק</string>
 </resources>

@@ -48,7 +48,7 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="red">Red</string>
-    <string name="group_members_">Group members</string>
+    <string name="group_members_">Group members (separate with commas)</string>
     <string name="failed_to_save_photo">Failed to save photo</string>
     <string name="team_name_is_required">Team name is required</string>
     <string name="alias_how_to_play">alias - how to play?</string>
@@ -68,4 +68,19 @@
     <!-- Language Toggle -->
     <string name="language_toggle">עברית</string>
     <string name="current_language">en</string>
+
+    <!-- Game Board -->
+    <string name="game_board">Game Board</string>
+    <string name="team_pawn">Team Pawn</string>
+    <string name="legend">Legend</string>
+    <string name="legend_description">Numbers 1-8 represent the words on the card to describe</string>
+    <string name="legend_click_pawn">Click on a pawn to see team members</string>
+    <string name="team_members">Team Members:</string>
+    <string name="current_describer_hint">👉 ⭐ indicates the current describer</string>
+    <string name="close">Close</string>
+    <string name="view_board">View Board</string>
+    <string name="you_win">You Win!</string>
+    <string name="zoom_in">Zoom In</string>
+    <string name="zoom_out">Zoom Out</string>
+    <string name="team">Team</string>
 </resources>

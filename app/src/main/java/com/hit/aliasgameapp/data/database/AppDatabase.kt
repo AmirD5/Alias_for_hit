@@ -23,8 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "team_database"
                 )
-                    .fallbackToDestructiveMigration(false)  // This deletes old data and recreates the table
-                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration(true)
                     .build()
                 INSTANCE = instance
                 instance
