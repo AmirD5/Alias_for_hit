@@ -1,138 +1,214 @@
 [
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_board_space_special.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_board_space_special.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_about.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_about.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_team_pawn.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_team_pawn.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_win_label_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\win_label_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_main_list.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_main_list.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_fragment_add_edit.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\fragment_add_edit.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_dialog_team_tooltip.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/dialog_team_tooltip.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_amber_ring.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\amber_ring.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_pawn.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_pawn.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_fragment_game_board.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\fragment_game_board.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_team_indicator.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_team_indicator.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_board_gradient_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\board_gradient_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/xml_data_extraction_rules.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_connecting_dot.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\connecting_dot.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_color_circle.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\color_circle.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_soft_pastel_gradient.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\soft_pastel_gradient.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space_win.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space_win.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_pawn_background.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/pawn_background.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_team.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_team.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_ic_pawn.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\ic_pawn.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_activity_main.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/activity_main.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_board_space.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_board_space.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team_pawn.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_team_pawn.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_ic_minus.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\ic_minus.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_colorful_gradient_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\colorful_gradient_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_spinner_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\spinner_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team_indicator.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_team_indicator.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/xml_backup_rules.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/xml/backup_rules.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_details.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_details.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_board_space_special.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_board_space_special.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_ic_minus.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/ic_minus.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_item_team.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/item_team.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_circle_space_background.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/circle_space_background.xml"
-    },
-    {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_add_edit.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_add_edit.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_rounded_card_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\rounded_card_background.xml"
     },
     {
         "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_game_board.xml.flat",
         "source": "com.hit.aliasgameapp-main-53:/layout/fragment_game_board.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/drawable_connecting_dot.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/drawable/connecting_dot.xml"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.hit.aliasgameapp-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_ic_arrow_forward.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\ic_arrow_forward.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_button_gradient.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\button_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_fragment_main_list.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\fragment_main_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_gold_ring.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\gold_ring.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_spinner_color_item.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\spinner_color_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_fragment_details.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\fragment_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_start_badge_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\start_badge_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_round_badge_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\round_badge_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_pawn_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\pawn_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_board_space_win.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_board_space_win.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_white_ring.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\white_ring.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_dialog_team_tooltip.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\dialog_team_tooltip.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_board_space_start.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_board_space_start.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_circle_space_background.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\circle_space_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\drawable_header_gradient.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\header_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_fragment_about.xml.flat",
+        "source": "C:\\Users\\user\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\fragment_about.xml"
     }
 ]

@@ -77,6 +77,7 @@
     <string name="legend_description">המספרים 1-8 מייצגים את המילים בכרטיס שצריך לתאר</string>
     <string name="legend_click_pawn">לחץ על כלי כדי לראות את חברי הקבוצה</string>
     <string name="team_members">חברי הקבוצה:</string>
+    <string name="current_reader">(קורא נוכחי)</string>
     <string name="current_describer_hint">👉 ⭐ מציין את המתאר הנוכחי</string>
     <string name="close">סגור</string>
     <string name="view_board">צפה בלוח</string>
@@ -84,4 +85,8 @@
     <string name="zoom_in">התקרב</string>
     <string name="zoom_out">התרחק</string>
     <string name="team">קבוצה</string>
+    <string name="back">חזור</string>
+    <string name="start">התחל</string>
+    <string name="maximum_teams_reached">מקסימום 4 קבוצות יכולות לשחק</string>
+    <string name="maximum_4_teams">מקסימום 4 קבוצות</string>
 </resources>

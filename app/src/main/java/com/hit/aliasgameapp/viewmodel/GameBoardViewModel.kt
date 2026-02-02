@@ -28,12 +28,8 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
 
     private fun initializeBoardSpaces() {
         val spaces = mutableListOf<BoardSpace>()
-        for (i in 0 until 31) { // Changed from 30 to 31
-            val number = if (i == 30) {
-                0 // Special marker for "You Win!" space
-            } else {
-                (i % 8) + 1 // Numbers 1-8 cycling
-            }
+        for (i in 0 until 30) { // Original: 30 spaces only
+            val number = (i % 8) + 1 // Numbers 1-8 cycling
             spaces.add(BoardSpace(position = i, number = number))
         }
         _boardSpaces.value = spaces
@@ -68,7 +64,7 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
         val positions = _teamPositions.value?.toMutableMap() ?: return
         val teamPosition = positions[teamId] ?: return
 
-        val newPosition = (teamPosition.currentPosition + spaces).coerceAtMost(30) // Changed to 30 for "You Win!" position
+        val newPosition = (teamPosition.currentPosition + spaces).coerceAtMost(29) // Max position 29
         positions[teamId] = teamPosition.copy(currentPosition = newPosition)
         _teamPositions.value = positions
     }

@@ -15,6 +15,7 @@
     <string name="add_card">הוסף קבוצה</string>
     <string name="alias_how_to_play">אליאס - איך משחקים?</string>
     <string name="app_name">אליאס</string>
+    <string name="back">חזור</string>
     <string name="blue">כחול</string>
     <string name="cancel">בטל</string>
     <string name="change_image">שנה את תמונת הקבוצה</string>
@@ -23,6 +24,7 @@
     <string name="confirm_delete_message">אתה בטוח שאתה רוצה למחוק את הקבוצה הזו? לא ניתן לבטל שינוי זה</string>
     <string name="current_describer_hint">👉 ⭐ מציין את המתאר הנוכחי</string>
     <string name="current_language">iw</string>
+    <string name="current_reader">(קורא נוכחי)</string>
     <string name="delete">מחק</string>
     <string name="delete_card">מחק קבוצה</string>
     <string name="deleted_successfully">הקבוצה נמחקה</string>
@@ -50,6 +52,8 @@
     <string name="legend">מקרא</string>
     <string name="legend_click_pawn">לחץ על כלי כדי לראות את חברי הקבוצה</string>
     <string name="legend_description">המספרים 1-8 מייצגים את המילים בכרטיס שצריך לתאר</string>
+    <string name="maximum_4_teams">מקסימום 4 קבוצות</string>
+    <string name="maximum_teams_reached">מקסימום 4 קבוצות יכולות לשחק</string>
     <string name="no_cards">אין קבוצות עדיין, לחץ \"הוסף קבוצה\" כדי להוסיף את הקבוצה הראשונה שלך!</string>
     <string name="no_color_set">צבע לא נבחר</string>
     <string name="no_members_listed">לא נרשמו חברים</string>
@@ -63,6 +67,7 @@
     <string name="required_field">השדה הזה הכרחי</string>
     <string name="save">שמור</string>
     <string name="saved_successfully">הקבוצה נשמרה בהצלחה</string>
+    <string name="start">התחל</string>
     <string name="teal">טורקיז</string>
     <string name="team">קבוצה</string>
     <string name="team_members">חברי הקבוצה:</string>

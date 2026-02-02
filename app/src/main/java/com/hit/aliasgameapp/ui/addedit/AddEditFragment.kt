@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
@@ -51,13 +50,29 @@ class AddEditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Back button
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         if (savedInstanceState != null) {
             currentPhotoPath = savedInstanceState.getString("currentPhotoPath")
         }
-        // Setup color spinner
+
+        // Setup color spinner with custom adapter showing actual colors
         val colorArray = resources.getStringArray(R.array.team_colors)
-        val colorAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, colorArray)
-        colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val colorResources = intArrayOf(
+            R.color.team_red,
+            R.color.team_blue,
+            R.color.team_green,
+            R.color.team_yellow,
+            R.color.team_orange,
+            R.color.team_purple,
+            R.color.team_pink,
+            R.color.team_teal
+        )
+
+        val colorAdapter = ColorSpinnerAdapter(requireContext(), colorArray, colorResources)
         binding.spinnerColor.adapter = colorAdapter
 
         if (savedInstanceState == null && editingTeamId > 0) {

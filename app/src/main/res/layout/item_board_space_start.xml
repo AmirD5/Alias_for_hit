@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <!-- Shadow layer for depth -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/shadow"
+        app:cardCornerRadius="47.5dp"
+        app:cardElevation="0dp"
+        android:alpha="0.3"
+        android:layout_marginTop="4dp" />
+
+    <!-- Main space -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSpace"
+        android:layout_width="91dp"
+        android:layout_height="91dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/accent"
+        app:cardCornerRadius="45.5dp"
+        app:cardElevation="8dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- White ring for contrast -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/white_ring" />
+
+            <TextView
+                android:id="@+id/tvStartLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/start"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:textAllCaps="true"
+                android:shadowColor="#000000"
+                android:shadowRadius="8"
+                android:shadowDx="0"
+                android:shadowDy="2" />
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
+

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.hit.aliasgameapp.R;
 import java.lang.NullPointerException;
@@ -20,6 +21,9 @@ import java.lang.String;
 public final class FragmentDetailsBinding implements ViewBinding {
   @NonNull
   private final ScrollView rootView;
+
+  @NonNull
+  public final FloatingActionButton btnBack;
 
   @NonNull
   public final Button btnEdit;
@@ -39,11 +43,13 @@ public final class FragmentDetailsBinding implements ViewBinding {
   @NonNull
   public final TextView tvDetailNotes;
 
-  private FragmentDetailsBinding(@NonNull ScrollView rootView, @NonNull Button btnEdit,
+  private FragmentDetailsBinding(@NonNull ScrollView rootView,
+      @NonNull FloatingActionButton btnBack, @NonNull Button btnEdit,
       @NonNull ShapeableImageView ivDetailImage, @NonNull TextView tvDetailColor,
       @NonNull TextView tvDetailMembers, @NonNull TextView tvDetailName,
       @NonNull TextView tvDetailNotes) {
     this.rootView = rootView;
+    this.btnBack = btnBack;
     this.btnEdit = btnEdit;
     this.ivDetailImage = ivDetailImage;
     this.tvDetailColor = tvDetailColor;
@@ -79,6 +85,12 @@ public final class FragmentDetailsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnBack;
+      FloatingActionButton btnBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnBack == null) {
+        break missingId;
+      }
+
       id = R.id.btn_edit;
       Button btnEdit = ViewBindings.findChildViewById(rootView, id);
       if (btnEdit == null) {
@@ -115,7 +127,7 @@ public final class FragmentDetailsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentDetailsBinding((ScrollView) rootView, btnEdit, ivDetailImage,
+      return new FragmentDetailsBinding((ScrollView) rootView, btnBack, btnEdit, ivDetailImage,
           tvDetailColor, tvDetailMembers, tvDetailName, tvDetailNotes);
     }
     String missingId = rootView.getResources().getResourceName(id);

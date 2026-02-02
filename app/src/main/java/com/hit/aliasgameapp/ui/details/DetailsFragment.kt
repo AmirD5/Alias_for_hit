@@ -37,6 +37,11 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Back button
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         if (teamId == -1) {
             findNavController().navigateUp()
             return

@@ -4,60 +4,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
-    android:padding="16dp">
+    android:background="@drawable/gradient_background">
 
-    <TextView
-        android:id="@+id/tv_welcome"
+    <!-- Colorful Header Section -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_to_alias"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/primary"
-        android:layout_marginBottom="8dp" />
+        android:orientation="vertical"
+        android:background="@drawable/header_gradient"
+        android:padding="24dp"
+        android:paddingBottom="32dp"
+        android:elevation="4dp">
 
-    <TextView
-        android:id="@+id/tv_teams_header"
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_to_alias"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/tv_teams_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/the_teams_are"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:alpha="0.9"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- Content Section -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/the_teams_are"
-        android:textSize="20sp"
-        android:textColor="@color/text_primary"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/btn_add_team"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_a_team"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-    <Button
-        android:id="@+id/btn_view_board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/view_board"
-        android:textSize="16sp"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_marginBottom="16dp" />
-
+    <!-- Teams RecyclerView at the top -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    <!-- Buttons at the bottom -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="16dp">
+        android:layout_marginBottom="16dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnAbout"
@@ -65,7 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:src="@android:drawable/ic_menu_info_details"
-            android:contentDescription="@string/alias_how_to_play" />
+            android:contentDescription="@string/alias_how_to_play"
+            app:tint="@color/white"
+            app:backgroundTint="@color/info" />
 
         <Button
             android:id="@+id/btn_language_toggle"
@@ -75,7 +82,33 @@
             android:text="@string/language_toggle"
             android:textSize="14sp"
             android:minWidth="80dp"
-            style="?attr/materialButtonOutlinedStyle" />
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/primary"
+            android:textColor="@color/primary" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_a_team"
+        android:textSize="16sp"
+        android:background="@drawable/button_gradient"
+        android:textColor="@color/white"
+        android:paddingVertical="14dp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btn_view_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/view_board"
+        android:textSize="16sp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/primary"
+        android:textColor="@color/primary"
+        android:paddingVertical="14dp" />
 
     </LinearLayout>
 
@@ -86,6 +119,7 @@
         android:layout_gravity="center"
         android:text="@string/no_cards"
         android:textSize="18sp"
+        android:textColor="@color/text_secondary"
         android:visibility="gone" />
 
 </LinearLayout>

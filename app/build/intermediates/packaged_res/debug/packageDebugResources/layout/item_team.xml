@@ -4,18 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/surface"
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/rounded_card_background">
 
+        <!-- Colored accent bar -->
         <View
             android:id="@+id/color_indicator"
             android:layout_width="8dp"
             android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -30,7 +35,7 @@
             app:shapeAppearanceOverlay="@style/RoundedImageView"
             app:layout_constraintStart_toEndOf="@id/color_indicator"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="12dp" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -38,6 +43,8 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintEnd_toStartOf="@id/btn_delete"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,6 +54,7 @@
             android:id="@+id/tv_color"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintTop_toBottomOf="@id/tv_name"
             android:layout_marginStart="16dp"
@@ -59,6 +67,7 @@
             android:src="@android:drawable/ic_menu_delete"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/delete_card"
+            app:tint="@color/error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -4,31 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.databinding.FragmentGameBoardBinding
 import com.hit.aliasgameapp.viewmodel.GameBoardViewModel
+import kotlin.random.Random
 
 class GameBoardFragment : Fragment() {
 
     private var _binding: FragmentGameBoardBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var viewModel: GameBoardViewModel
-
-    private val spaceSize = 91  // Increased by 30% (was 70dp)
-    private val spaceMargin = 5 // Margin around circle in dp
-    private val totalSpaceSize = spaceSize + (spaceMargin * 2) // Total space with margin = 101dp
-
-    private var scaleFactor = 0.4f // Start zoomed out to see more of board
-    private val minScale = 0.3f // Zoom out even more to see whole board
-    private val maxScale = 3f   // Zoom in to see one space clearly
-    private val zoomStep = 0.2f // Amount to zoom per button click
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,289 +39,230 @@ class GameBoardFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[GameBoardViewModel::class.java]
 
-        setupZoom()
+        binding.cvBoard.layoutDirection = View.LAYOUT_DIRECTION_LTR
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         setupObservers()
     }
 
-    private fun setupZoom() {
-        // Set initial zoom
-        applyZoom()
-
-        // Zoom in button
-        binding.btnZoomIn.setOnClickListener {
-            scaleFactor = (scaleFactor + zoomStep).coerceAtMost(maxScale)
-            applyZoom()
-        }
-
-        // Zoom out button
-        binding.btnZoomOut.setOnClickListener {
-            scaleFactor = (scaleFactor - zoomStep).coerceAtLeast(minScale)
-            applyZoom()
-        }
-    }
-
-    private fun applyZoom() {
-        binding.boardScrollContainer.scaleX = scaleFactor
-        binding.boardScrollContainer.scaleY = scaleFactor
-    }
 
     private fun setupObservers() {
         viewModel.boardSpaces.observe(viewLifecycleOwner) { spaces ->
             if (spaces != null) {
-                updateBoardSpaces(spaces)
+                drawBoard(spaces)
             }
         }
 
         viewModel.teamPositions.observe(viewLifecycleOwner) { positions ->
             if (positions != null) {
-                updateTeamPawns(positions)
+                drawPawns(positions)
             }
         }
     }
 
-    private fun updateBoardSpaces(spaces: List<com.hit.aliasgameapp.data.model.BoardSpace>) {
+    private fun drawBoard(@Suppress("UNUSED_PARAMETER") spaces: List<com.hit.aliasgameapp.data.model.BoardSpace>) {
         binding.boardContainer.removeAllViews()
 
-        val spiralPositions = calculateSpiralPositions()
+        // Generate random numbers for positions (1-8)
+        val randomNumbers = generateRandomNumbers()
 
-        // Add single connecting dot between each position FIRST (behind circles)
-        addConnectingDots(spiralPositions)
+        // Calculate positions - just first row for now
+        val positions = calculatePositions()
 
-        // Add spaces to board on top
-        spaces.forEachIndexed { index, space ->
-            if (index < spiralPositions.size) {
-                val spaceView = createBoardSpaceView(space)
-                val (x, y) = spiralPositions[index]
+        // Draw board spaces (no connecting lines for now)
+        positions.forEachIndexed { index, (x, y) ->
+            val circle = createBoardSpace(index, randomNumbers[index])
+            circle.x = x
+            circle.y = y
+            binding.boardContainer.addView(circle)
+        }
+    }
 
-                val layoutParams = RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-                )
-                spaceView.layoutParams = layoutParams
-                spaceView.x = x
-                spaceView.y = y
-
-                binding.boardContainer.addView(spaceView)
+    private fun generateRandomNumbers(): List<Int> {
+        // Position 0 (Start) and 21 (You Win) have no numbers
+        // Positions 5, 12, 18 always have number 5
+        // Other positions get random numbers 1-8
+        return List(22) { index ->
+            when (index) {
+                0 -> 0  // No number - Start position
+                5, 12, 18 -> 5  // Special positions always have 5
+                21 -> 0  // No number - You Win position
+                else -> Random.nextInt(1, 9)  // Random 1-8
             }
         }
     }
 
-    private fun addConnectingDots(positions: List<Pair<Float, Float>>) {
-        for (i in 0 until positions.size - 1) {
-            val (x1, y1) = positions[i]
-            val (x2, y2) = positions[i + 1]
-
-            // Calculate center of each space (total space is 80dp, so center is at 40dp)
-            val centerX1 = x1 + dpToPx(totalSpaceSize / 2)
-            val centerY1 = y1 + dpToPx(totalSpaceSize / 2)
-            val centerX2 = x2 + dpToPx(totalSpaceSize / 2)
-            val centerY2 = y2 + dpToPx(totalSpaceSize / 2)
-
-            // Add ONE dot in the middle between the two positions
-            val dotX = (centerX1 + centerX2) / 2
-            val dotY = (centerY1 + centerY2) / 2
-
-            val dot = createConnectingDot()
-            val layoutParams = RelativeLayout.LayoutParams(
-                dpToPx(6),
-                dpToPx(6)
-            )
-            dot.layoutParams = layoutParams
-            dot.x = dotX - dpToPx(3) // Center the dot
-            dot.y = dotY - dpToPx(3)
-
-            binding.boardContainer.addView(dot)
-        }
-    }
-
-    private fun createConnectingDot(): View {
-        val dot = View(requireContext())
-        dot.setBackgroundResource(R.drawable.connecting_dot)
-        return dot
-    }
-
-    private fun createBoardSpaceView(space: com.hit.aliasgameapp.data.model.BoardSpace): View {
-        // Use special layout for position 30 (You Win!)
-        val layoutId = if (space.position == 30) {
-            R.layout.item_board_space_win
-        } else if (space.number == 5) {
-            // Use special glowing layout for number 5 (special feature)
-            R.layout.item_board_space_special
-        } else {
-            R.layout.item_board_space
-        }
-
-        val spaceView = layoutInflater.inflate(layoutId, binding.boardContainer, false)
-
-        // Only set number for regular spaces (not the win space)
-        if (space.position != 30) {
-            val tvNumber = spaceView.findViewById<android.widget.TextView>(R.id.tvCardNumber)
-            tvNumber?.text = space.number.toString()
-        }
-
-        return spaceView
-    }
-
-    private fun updateTeamPawns(positions: Map<Int, com.hit.aliasgameapp.data.model.TeamPosition>) {
-        // Remove existing pawns
-        binding.pawnsContainer.removeAllViews()
-
-        val spiralPositions = calculateSpiralPositions()
-
-        // Group teams by position to handle overlapping
-        val teamsByPosition = positions.values.groupBy { it.currentPosition }
-
-        teamsByPosition.forEach { (position, teams) ->
-            if (position < spiralPositions.size) {
-                teams.forEachIndexed { index, teamPosition ->
-                    val pawnView = createPawnView(teamPosition, spiralPositions, index, teams.size)
-                    binding.pawnsContainer.addView(pawnView)
-                }
-            }
-        }
-    }
-
-    private fun createPawnView(
-        teamPosition: com.hit.aliasgameapp.data.model.TeamPosition,
-        spiralPositions: List<Pair<Float, Float>>,
-        index: Int,
-        totalAtPosition: Int
-    ): View {
-        val pawnView = layoutInflater.inflate(R.layout.item_team_pawn, binding.pawnsContainer, false)
-
-        val pawnIcon = pawnView.findViewById<android.widget.ImageView>(R.id.ivPawn)
-        val tvTeamName = pawnView.findViewById<android.widget.TextView>(R.id.tvPawnTeamName)
-
-        // Set pawn color
-        val colorResId = getColorResourceId(teamPosition.teamColor)
-        pawnIcon.setColorFilter(ContextCompat.getColor(requireContext(), colorResId))
-
-        tvTeamName.text = teamPosition.teamName
-        tvTeamName.visibility = View.GONE // Hide name to reduce clutter on board
-
-        // Position pawn on board - center it on the space
-        val (x, y) = spiralPositions[teamPosition.currentPosition]
-        val layoutParams = RelativeLayout.LayoutParams(
-            dpToPx(25), // Pawn size
-            dpToPx(25)
-        )
-        pawnView.layoutParams = layoutParams
-
-        // Calculate base center offset
-        val baseOffsetX = dpToPx((totalSpaceSize - 25) / 2)
-        val baseOffsetY = dpToPx((totalSpaceSize - 25) / 2)
-
-        // If multiple pawns at same position, offset them in a circle pattern
-        val angleOffset = (index * 360f / totalAtPosition) * Math.PI / 180
-        val radiusOffset = if (totalAtPosition > 1) dpToPx(15) else 0
-
-        val offsetX = (radiusOffset * Math.cos(angleOffset)).toFloat()
-        val offsetY = (radiusOffset * Math.sin(angleOffset)).toFloat()
-
-        pawnView.x = x + baseOffsetX + offsetX
-        pawnView.y = y + baseOffsetY + offsetY
-
-        // Add elevation to ensure pawn is visible on top
-        pawnView.elevation = dpToPx(8).toFloat()
-
-        // Set click listener to show tooltip
-        pawnView.setOnClickListener {
-            showTeamTooltip(teamPosition)
-        }
-
-        return pawnView
-    }
-
-    private fun calculateSpiralPositions(): List<Pair<Float, Float>> {
+    private fun calculatePositions(): List<Pair<Float, Float>> {
         val positions = mutableListOf<Pair<Float, Float>>()
-        val spaceSizePx = dpToPx(totalSpaceSize).toFloat() // Use 101dp (91 + 10 margin)
-        val margin = dpToPx(10).toFloat() // Reduced from 15dp to 10dp for tighter spacing
 
-        // Start from outer edge and spiral inward (square pattern)
-        var x = 80f // Start further from edge to prevent cutting
-        var y = 80f
-        var direction = 0 // 0=right, 1=down, 2=left, 3=up
-        var steps = 6 // Reduced from 7 to 6 to make spiral tighter
-        var stepsTaken = 0
-        var directionChanges = 0
+        // Fixed spacing of 220f between positions
+        val spacing = 150f
+        val startX = 30f  // Top-left corner
+        val startY = 30f  // Top-left corner
 
-        for (i in 0 until 31) { // Changed from 30 to 31 positions
-            positions.add(Pair(x, y))
+        // Pattern: Start, down 1-6, right 7-8, up 9-12, right 13-14, down 15-18, right to You Win (19)
 
-            // Move in current direction
-            when (direction) {
-                0 -> x += spaceSizePx + margin // right
-                1 -> y += spaceSizePx + margin // down
-                2 -> x -= spaceSizePx + margin // left
-                3 -> y -= spaceSizePx + margin // up
-            }
+        // Position 0: Start
+        positions.add(Pair(startX, startY))
 
-            stepsTaken++
-
-            // Check if we need to change direction
-            if (stepsTaken >= steps) {
-                direction = (direction + 1) % 4
-                stepsTaken = 0
-                directionChanges++
-
-                // Decrease steps after every 2 direction changes (spiral inward)
-                if (directionChanges % 2 == 0 && steps > 1) {
-                    steps--
-                }
-            }
+        // Positions 1-6: Going down from Start
+        for (i in 1..6) {
+            positions.add(Pair(startX, startY + i * spacing))
         }
+
+        // Positions 7-8: Going right from position 6
+        positions.add(Pair(startX + spacing, startY + 6 * spacing))  // 7
+        positions.add(Pair(startX + 2 * spacing, startY + 6 * spacing))  // 8
+
+        // Positions 9-12: Going up from position 8
+        for (i in 5 downTo 2) {
+            positions.add(Pair(startX + 2 * spacing, startY + i * spacing))  // 9, 10, 11, 12
+        }
+
+        // Positions 13-14: Going right from position 12
+        positions.add(Pair(startX + 3 * spacing, startY + 2 * spacing))  // 13
+        positions.add(Pair(startX + 4 * spacing, startY + 2 * spacing))  // 14
+
+        // Positions 15-20: Going down from position 14 (extended to 6 positions)
+        for (i in 3..8) {
+            positions.add(Pair(startX + 4 * spacing, startY + i * spacing))  // 15, 16, 17, 18, 19, 20
+        }
+
+        // Position 21: You Win! - Going right from position 20
+        positions.add(Pair(startX + 5 * spacing, startY + 8 * spacing))  // 21 - You Win!
 
         return positions
     }
 
-    private fun showTeamTooltip(teamPosition: com.hit.aliasgameapp.data.model.TeamPosition) {
-        val members = viewModel.getMembersList(teamPosition)
-        val currentPlayer = viewModel.getCurrentPlayer(teamPosition)
-
-        if (members.isEmpty()) {
-            Toast.makeText(requireContext(), getString(R.string.no_members_listed), Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // Create tooltip dialog
-        val dialogView = layoutInflater.inflate(R.layout.dialog_team_tooltip, null)
-        val dialog = android.app.AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
-
-        val tvTeamName = dialogView.findViewById<android.widget.TextView>(R.id.tvTooltipTeamName)
-        val tvMembers = dialogView.findViewById<android.widget.TextView>(R.id.tvTooltipMembers)
-        val btnClose = dialogView.findViewById<android.widget.Button>(R.id.btnCloseTooltip)
-
-        tvTeamName.text = teamPosition.teamName
-        tvTeamName.setTextColor(ContextCompat.getColor(requireContext(), getColorResourceId(teamPosition.teamColor)))
-
-        // Build members list with highlighting
-        val membersText = buildString {
-            members.forEachIndexed { index, member ->
-                if (member == currentPlayer) {
-                    append("👉 ")
+    private fun createBoardSpace(position: Int, number: Int): View {
+        val view = when (position) {
+            0 -> {
+                // Start position
+                layoutInflater.inflate(R.layout.item_board_space, binding.boardContainer, false).apply {
+                    findViewById<TextView>(R.id.tvCardNumber)?.apply {
+                        text = getString(R.string.start)
+                        textSize = 14f
+                    }
                 }
-                append(member)
-                if (member == currentPlayer) {
-                    append(" ⭐")
+            }
+            21 -> {
+                // You Win position
+                layoutInflater.inflate(R.layout.item_board_space_win, binding.boardContainer, false)
+            }
+            else -> {
+                // Regular positions with numbers
+                val layoutRes = if (number == 5) {
+                    R.layout.item_board_space_special
+                } else {
+                    R.layout.item_board_space
                 }
-                if (index < members.size - 1) {
-                    append("\n")
+
+                layoutInflater.inflate(layoutRes, binding.boardContainer, false).apply {
+                    findViewById<TextView>(R.id.tvCardNumber)?.text = number.toString()
                 }
             }
         }
 
-        tvMembers.text = membersText
-
-        btnClose.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
+        return view
     }
 
-    private fun getColorResourceId(colorName: String): Int {
+    private fun drawPawns(positions: Map<Int, com.hit.aliasgameapp.data.model.TeamPosition>) {
+        binding.pawnsContainer.removeAllViews()
+
+        val boardPositions = calculatePositions()
+        val grouped = positions.values.groupBy { it.currentPosition }
+
+        grouped.forEach { (position, teams) ->
+            if (position < boardPositions.size) {
+                val (baseX, baseY) = boardPositions[position]
+
+                teams.forEachIndexed { index, team ->
+                    val pawn = createPawn(team, position)
+
+                    // Better separation for pawns on same position
+                    val offsetX = (index % 2) * 30f
+                    val offsetY = (index / 2) * 30f
+
+                    pawn.x = baseX + 15f + offsetX
+                    pawn.y = baseY + 15f + offsetY
+
+                    binding.pawnsContainer.addView(pawn)
+                }
+            }
+        }
+    }
+
+    private fun createPawn(team: com.hit.aliasgameapp.data.model.TeamPosition, position: Int): View {
+        val pawn = layoutInflater.inflate(R.layout.item_team_pawn, binding.pawnsContainer, false)
+
+        val icon = pawn.findViewById<ImageView>(R.id.ivPawn)
+        icon.setColorFilter(ContextCompat.getColor(requireContext(), getTeamColor(team.teamColor)))
+
+        // Add click listener to show tooltip with position
+        pawn.setOnClickListener {
+            showTeamTooltip(team, position)
+        }
+
+        return pawn
+    }
+
+    private fun showTeamTooltip(team: com.hit.aliasgameapp.data.model.TeamPosition, position: Int) {
+        // Split members string by comma
+        val membersList = team.members.split(",").map { it.trim() }.filter { it.isNotBlank() }
+
+        if (membersList.isEmpty()) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(team.teamName)
+                .setMessage(getString(R.string.no_members_listed))
+                .setPositiveButton(getString(R.string.close), null)
+                .create()
+                .show()
+            return
+        }
+
+        // Determine current reader based on currentPlayerIndex
+        val currentReaderIndex = team.currentPlayerIndex % membersList.size
+
+        // Get the random numbers to display the card number at this position
+        val randomNumbers = generateRandomNumbers()
+        val cardNumber = if (position < randomNumbers.size) randomNumbers[position] else 0
+
+        // Build message with position, card number, and highlighted reader
+        val message = buildString {
+            // Show position and card number
+            append("Position: $position")
+            if (cardNumber > 0) {
+                append("\nCard Number: $cardNumber")
+            }
+            append("\n\n")
+            append(getString(R.string.team_members))
+            append("\n\n")
+            membersList.forEachIndexed { index, member ->
+                if (index == currentReaderIndex) {
+                    append("▶ ") // Arrow to indicate current reader
+                    append(member)
+                    append(" ")
+                    append(getString(R.string.current_reader))
+                    append(" ◀")
+                } else {
+                    append(member)
+                }
+                append("\n")
+            }
+        }
+
+        AlertDialog.Builder(requireContext())
+            .setTitle(team.teamName)
+            .setMessage(message)
+            .setPositiveButton(getString(R.string.close), null)
+            .create()
+            .show()
+    }
+
+    private fun getTeamColor(colorName: String): Int {
         return when (colorName) {
             "Red", "אדום" -> R.color.team_red
             "Blue", "כחול" -> R.color.team_blue
@@ -343,14 +276,9 @@ class GameBoardFragment : Fragment() {
         }
     }
 
-    private fun dpToPx(dp: Int): Int {
-        val density = resources.displayMetrics.density
-        return (dp * density).toInt()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-

@@ -76,11 +76,16 @@
     <string name="legend_description">Numbers 1-8 represent the words on the card to describe</string>
     <string name="legend_click_pawn">Click on a pawn to see team members</string>
     <string name="team_members">Team Members:</string>
+    <string name="current_reader">(Current Reader)</string>
     <string name="current_describer_hint">👉 ⭐ indicates the current describer</string>
     <string name="close">Close</string>
     <string name="view_board">View Board</string>
     <string name="you_win">You Win!</string>
+    <string name="start">Start</string>
     <string name="zoom_in">Zoom In</string>
     <string name="zoom_out">Zoom Out</string>
     <string name="team">Team</string>
+    <string name="back">Back</string>
+    <string name="maximum_teams_reached">Maximum 4 teams can play</string>
+    <string name="maximum_4_teams">Maximum 4 Teams</string>
 </resources>

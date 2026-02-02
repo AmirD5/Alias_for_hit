@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -23,6 +24,9 @@ import java.lang.String;
 public final class FragmentAddEditBinding implements ViewBinding {
   @NonNull
   private final ScrollView rootView;
+
+  @NonNull
+  public final FloatingActionButton btnBack;
 
   @NonNull
   public final Button btnPickImage;
@@ -57,13 +61,15 @@ public final class FragmentAddEditBinding implements ViewBinding {
   @NonNull
   public final TextView tvColorLabel;
 
-  private FragmentAddEditBinding(@NonNull ScrollView rootView, @NonNull Button btnPickImage,
-      @NonNull Button btnSave, @NonNull TextInputEditText etMembers,
-      @NonNull TextInputEditText etName, @NonNull TextInputEditText etNotes,
-      @NonNull ShapeableImageView ivCardImage, @NonNull Spinner spinnerColor,
-      @NonNull TextInputLayout tilMembers, @NonNull TextInputLayout tilName,
-      @NonNull TextInputLayout tilNotes, @NonNull TextView tvColorLabel) {
+  private FragmentAddEditBinding(@NonNull ScrollView rootView,
+      @NonNull FloatingActionButton btnBack, @NonNull Button btnPickImage, @NonNull Button btnSave,
+      @NonNull TextInputEditText etMembers, @NonNull TextInputEditText etName,
+      @NonNull TextInputEditText etNotes, @NonNull ShapeableImageView ivCardImage,
+      @NonNull Spinner spinnerColor, @NonNull TextInputLayout tilMembers,
+      @NonNull TextInputLayout tilName, @NonNull TextInputLayout tilNotes,
+      @NonNull TextView tvColorLabel) {
     this.rootView = rootView;
+    this.btnBack = btnBack;
     this.btnPickImage = btnPickImage;
     this.btnSave = btnSave;
     this.etMembers = etMembers;
@@ -104,6 +110,12 @@ public final class FragmentAddEditBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnBack;
+      FloatingActionButton btnBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnBack == null) {
+        break missingId;
+      }
+
       id = R.id.btn_pick_image;
       Button btnPickImage = ViewBindings.findChildViewById(rootView, id);
       if (btnPickImage == null) {
@@ -170,8 +182,9 @@ public final class FragmentAddEditBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAddEditBinding((ScrollView) rootView, btnPickImage, btnSave, etMembers,
-          etName, etNotes, ivCardImage, spinnerColor, tilMembers, tilName, tilNotes, tvColorLabel);
+      return new FragmentAddEditBinding((ScrollView) rootView, btnBack, btnPickImage, btnSave,
+          etMembers, etName, etNotes, ivCardImage, spinnerColor, tilMembers, tilName, tilNotes,
+          tvColorLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

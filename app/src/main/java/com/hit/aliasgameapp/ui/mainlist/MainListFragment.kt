@@ -44,7 +44,14 @@ class MainListFragment : Fragment() {
         )
 
         binding.recyclerView.adapter = adapter
+
         binding.btnAddTeam.setOnClickListener {
+            // Check if already at max teams (4)
+            val currentTeamCount = adapter.currentList.size
+            if (currentTeamCount >= 4) {
+                // Do nothing - button is disabled at max teams
+                return@setOnClickListener
+            }
             val bundle = Bundle().apply { putInt("teamId", -1) }
             findNavController().navigate(R.id.addEditFragment, bundle)
         }
@@ -56,6 +63,14 @@ class MainListFragment : Fragment() {
         viewModel.allTeams.observe(viewLifecycleOwner) { teams ->
             adapter.submitList(teams)
             binding.tvEmpty.visibility = if (teams.isEmpty()) View.VISIBLE else View.GONE
+
+            // Update button text when 4 teams reached (keep color and visibility same)
+            val maxTeamsReached = teams.size >= 4
+            if (maxTeamsReached) {
+                binding.btnAddTeam.text = getString(R.string.maximum_4_teams)
+            } else {
+                binding.btnAddTeam.text = getString(R.string.add_a_team)
+            }
         }
 
         binding.btnAbout.setOnClickListener {
