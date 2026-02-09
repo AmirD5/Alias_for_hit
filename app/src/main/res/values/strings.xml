@@ -88,4 +88,7 @@
     <string name="back">Back</string>
     <string name="maximum_teams_reached">Maximum 4 teams can play</string>
     <string name="maximum_4_teams">Maximum 4 Teams</string>
+    <string name="winner">WINNER!</string>
+    <string name="share_your_win">Share your win!</string>
+    <string name="back_to_home">Back to Home</string>
 </resources>

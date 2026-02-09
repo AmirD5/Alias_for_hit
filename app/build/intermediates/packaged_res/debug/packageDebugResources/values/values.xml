@@ -63,6 +63,7 @@
     <string name="alias_how_to_play">alias - how to play?</string>
     <string name="app_name">Alias Teams</string>
     <string name="back">Back</string>
+    <string name="back_to_home">Back to Home</string>
     <string name="blue">Blue</string>
     <string name="cancel">Cancel</string>
     <string name="change_image">Change Team Photo</string>
@@ -114,6 +115,7 @@
     <string name="required_field">This field is required</string>
     <string name="save">Save</string>
     <string name="saved_successfully">Team saved successfully</string>
+    <string name="share_your_win">Share your win!</string>
     <string name="start">Start</string>
     <string name="teal">Teal</string>
     <string name="team">Team</string>
@@ -128,6 +130,7 @@
     <string name="title_edit_card">Edit Team</string>
     <string name="view_board">View Board</string>
     <string name="welcome_to_alias">Welcome To Alias</string>
+    <string name="winner">WINNER!</string>
     <string name="yellow">Yellow</string>
     <string name="you_win">You Win!</string>
     <string name="zoom_in">Zoom In</string>

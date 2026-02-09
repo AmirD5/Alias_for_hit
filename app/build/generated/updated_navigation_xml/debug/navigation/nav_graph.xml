@@ -38,5 +38,11 @@ app:startDestination="@id/mainListFragment" >
     android:id="@+id/gameBoardFragment"
     android:name="com.hit.aliasgameapp.ui.gameboard.GameBoardFragment"
     android:label="@string/game_board"
-    tools:layout="@layout/fragment_game_board" />
+    tools:layout="@layout/fragment_game_board" >
+
+    <action
+        android:id="@+id/action_gameBoardFragment_to_mainListFragment"
+        app:destination="@id/mainListFragment" />
+
+</fragment>
 </navigation>

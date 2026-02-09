@@ -3820,6 +3820,7 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_gameBoardFragment_to_mainListFragment
 id action_image
 id action_menu_divider
 id action_menu_presenter
@@ -3876,7 +3877,10 @@ id btn_language_toggle
 id btn_pick_image
 id btn_save
 id btn_view_board
+id buttonHome
 id buttonPanel
+id buttonStartGame
+id buttonUploadScore
 id cache_measures
 id callMeasure
 id cancel_button
@@ -4270,6 +4274,8 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewWinnerName
+id textViewWinnerTitle
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -4486,6 +4492,7 @@ layout fragment_add_edit
 layout fragment_details
 layout fragment_game_board
 layout fragment_main_list
+layout fragment_result
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_board_space
@@ -4598,6 +4605,7 @@ string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
 string back
+string back_to_home
 string blue
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
@@ -4792,6 +4800,7 @@ string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string share_your_win
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string start
@@ -4809,6 +4818,7 @@ string title_card_list
 string title_edit_card
 string view_board
 string welcome_to_alias
+string winner
 string yellow
 string you_win
 string zoom_in

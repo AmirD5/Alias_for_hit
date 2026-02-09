@@ -275,10 +275,18 @@ class GameBoardFragment : Fragment() {
             else -> R.color.black
         }
     }
+    private fun navigateToResult(winnerName: String, score: Int) {
+        val bundle = android.os.Bundle().apply {
+            putString("winnerName", winnerName)
+            putInt("score", score)
+        }
+        findNavController().navigate(R.id.action_gameBoardFragment_to_mainListFragment, bundle)
+    }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

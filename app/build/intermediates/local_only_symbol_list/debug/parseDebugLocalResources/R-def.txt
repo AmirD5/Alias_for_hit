@@ -63,6 +63,7 @@ drawable start_badge_background
 drawable white_ring
 drawable win_label_background
 id aboutFragment
+id action_gameBoardFragment_to_mainListFragment
 id addEditFragment
 id boardContainer
 id btnAbout
@@ -75,6 +76,9 @@ id btn_language_toggle
 id btn_pick_image
 id btn_save
 id btn_view_board
+id buttonHome
+id buttonStartGame
+id buttonUploadScore
 id colorIndicator
 id color_indicator
 id color_name
@@ -98,6 +102,8 @@ id nav_host_fragment
 id pawnsContainer
 id recycler_view
 id spinner_color
+id textViewWinnerName
+id textViewWinnerTitle
 id til_members
 id til_name
 id til_notes
@@ -125,6 +131,7 @@ layout fragment_add_edit
 layout fragment_details
 layout fragment_game_board
 layout fragment_main_list
+layout fragment_result
 layout item_board_space
 layout item_board_space_special
 layout item_board_space_start
@@ -142,6 +149,7 @@ string add_card
 string alias_how_to_play
 string app_name
 string back
+string back_to_home
 string blue
 string cancel
 string change_image
@@ -193,6 +201,7 @@ string red
 string required_field
 string save
 string saved_successfully
+string share_your_win
 string start
 string teal
 string team
@@ -207,6 +216,7 @@ string title_card_list
 string title_edit_card
 string view_board
 string welcome_to_alias
+string winner
 string yellow
 string you_win
 string zoom_in

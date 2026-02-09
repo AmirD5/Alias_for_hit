@@ -110,6 +110,19 @@
         android:textColor="@color/primary"
         android:paddingVertical="14dp" />
 
+        <Button
+            android:id="@+id/buttonStartGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </LinearLayout>
 
     <TextView
@@ -121,5 +134,6 @@
         android:textSize="18sp"
         android:textColor="@color/text_secondary"
         android:visibility="gone" />
+
 
 </LinearLayout>

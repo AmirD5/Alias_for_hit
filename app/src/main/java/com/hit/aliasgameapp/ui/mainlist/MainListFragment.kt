@@ -12,6 +12,7 @@ import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.databinding.FragmentMainListBinding
 import com.hit.aliasgameapp.viewmodel.TeamViewModel
 import com.hit.aliasgameapp.util.LocaleHelper
+import android.widget.Toast
 class MainListFragment : Fragment() {
 
     private var _binding: FragmentMainListBinding? = null
@@ -80,6 +81,14 @@ class MainListFragment : Fragment() {
         binding.btnLanguageToggle.setOnClickListener {
             LocaleHelper.toggleLanguage(requireContext())
             requireActivity().recreate()
+        }
+
+        binding.buttonStartGame.setOnClickListener {
+            if (viewModel.allTeams.value.isNullOrEmpty()) {
+                Toast.makeText(context, "Please add at least 2 teams!", Toast.LENGTH_SHORT).show()
+            } else {
+                findNavController().navigate(R.id.action_gameBoardFragment_to_mainListFragment)
+            }
         }
     }
 
