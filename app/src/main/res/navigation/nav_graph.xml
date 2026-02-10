@@ -8,9 +8,15 @@
     <fragment
         android:id="@+id/mainListFragment"
         android:name="com.hit.aliasgameapp.ui.mainlist.MainListFragment"
-        android:label="@string/title_card_list" />
+        android:label="@string/title_card_list">
 
-    <fragment
+    <action
+        android:id="@+id/action_gameBoardFragment_to_mainListFragment"
+        app:destination="@id/gameBoardFragment" />
+    </fragment>
+
+
+<fragment
         android:id="@+id/addEditFragment"
         android:name="com.hit.aliasgameapp.ui.addedit.AddEditFragment"
         android:label="@string/title_add_card">

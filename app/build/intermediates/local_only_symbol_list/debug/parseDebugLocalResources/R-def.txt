@@ -196,6 +196,7 @@ string orange
 string photo_required
 string pick_image
 string pink
+string please_add_at_least_2_teams
 string purple
 string red
 string required_field

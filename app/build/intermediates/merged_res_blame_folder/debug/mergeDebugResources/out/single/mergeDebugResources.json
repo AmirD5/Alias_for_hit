@@ -4,10 +4,6 @@
         "source": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\drawable\\pawn_background.xml"
     },
     {
-        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_main_list.xml.flat",
-        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_main_list.xml"
-    },
-    {
         "merged": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_item_team_pawn.xml.flat",
         "source": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\item_team_pawn.xml"
     },
@@ -82,6 +78,10 @@
     {
         "merged": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-main-53:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.hit.aliasgameapp-debug-51:/layout_fragment_game_board.xml.flat",
+        "source": "com.hit.aliasgameapp-main-53:/layout/fragment_game_board.xml"
     },
     {
         "merged": "C:\\Users\\Noam\\.gradle\\daemon\\8.13\\com.hit.aliasgameapp-debug-51:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",

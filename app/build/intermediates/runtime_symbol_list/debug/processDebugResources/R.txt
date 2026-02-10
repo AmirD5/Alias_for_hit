@@ -4790,6 +4790,7 @@ int string path_password_strike_through 0x7f1100d8
 int string photo_required 0x7f1100d9
 int string pick_image 0x7f1100da
 int string pink 0x7f1100db
+int string please_add_at_least_2_teams 0x7f1100fd
 int string purple 0x7f1100dc
 int string red 0x7f1100dd
 int string required_field 0x7f1100de

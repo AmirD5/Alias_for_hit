@@ -84,8 +84,10 @@ class MainListFragment : Fragment() {
         }
 
         binding.buttonStartGame.setOnClickListener {
-            if (viewModel.allTeams.value.isNullOrEmpty()) {
-                Toast.makeText(context, "Please add at least 2 teams!", Toast.LENGTH_SHORT).show()
+            val teamsCount = viewModel.allTeams.value?.size ?: 0
+            if (teamsCount < 2) {
+                Toast.makeText(context,
+                    getString(R.string.please_add_at_least_2_teams), Toast.LENGTH_SHORT).show()
             } else {
                 findNavController().navigate(R.id.action_gameBoardFragment_to_mainListFragment)
             }
