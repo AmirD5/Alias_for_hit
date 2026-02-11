@@ -48,7 +48,7 @@ class ResultFragment : Fragment() {
         binding.textViewWinnerName.text = winnerName
 
         binding.buttonHome.setOnClickListener {
-            findNavController().navigate(R.id.action_gameBoardFragment_to_mainListFragment)
+            findNavController().navigate(R.id.action_resultFragment_to_mainListFragment)
         }
 
         binding.buttonUploadScore.setOnClickListener {

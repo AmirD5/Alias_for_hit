@@ -4,12 +4,14 @@ package com.hit.aliasgameapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,7 +22,7 @@ import java.lang.String;
 
 public final class FragmentGameBoardBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final RelativeLayout boardContainer;
@@ -29,29 +31,73 @@ public final class FragmentGameBoardBinding implements ViewBinding {
   public final FloatingActionButton btnBack;
 
   @NonNull
+  public final Button btnStartRound;
+
+  @NonNull
+  public final Button buttonCorrect;
+
+  @NonNull
+  public final Button buttonSkip;
+
+  @NonNull
   public final CardView cvBoard;
+
+  @NonNull
+  public final CardView gameOverlay;
 
   @NonNull
   public final RelativeLayout pawnsContainer;
 
   @NonNull
+  public final ScrollView scrollViewBoard;
+
+  @NonNull
+  public final TextView textViewScore;
+
+  @NonNull
+  public final TextView textViewTimer;
+
+  @NonNull
+  public final TextView textViewWord;
+
+  @NonNull
   public final TextView tvBoardTitle;
 
-  private FragmentGameBoardBinding(@NonNull ScrollView rootView,
+  @NonNull
+  public final TextView tvCurrentTurn;
+
+  @NonNull
+  public final TextView tvOverlayTeamName;
+
+  private FragmentGameBoardBinding(@NonNull ConstraintLayout rootView,
       @NonNull RelativeLayout boardContainer, @NonNull FloatingActionButton btnBack,
-      @NonNull CardView cvBoard, @NonNull RelativeLayout pawnsContainer,
-      @NonNull TextView tvBoardTitle) {
+      @NonNull Button btnStartRound, @NonNull Button buttonCorrect, @NonNull Button buttonSkip,
+      @NonNull CardView cvBoard, @NonNull CardView gameOverlay,
+      @NonNull RelativeLayout pawnsContainer, @NonNull ScrollView scrollViewBoard,
+      @NonNull TextView textViewScore, @NonNull TextView textViewTimer,
+      @NonNull TextView textViewWord, @NonNull TextView tvBoardTitle,
+      @NonNull TextView tvCurrentTurn, @NonNull TextView tvOverlayTeamName) {
     this.rootView = rootView;
     this.boardContainer = boardContainer;
     this.btnBack = btnBack;
+    this.btnStartRound = btnStartRound;
+    this.buttonCorrect = buttonCorrect;
+    this.buttonSkip = buttonSkip;
     this.cvBoard = cvBoard;
+    this.gameOverlay = gameOverlay;
     this.pawnsContainer = pawnsContainer;
+    this.scrollViewBoard = scrollViewBoard;
+    this.textViewScore = textViewScore;
+    this.textViewTimer = textViewTimer;
+    this.textViewWord = textViewWord;
     this.tvBoardTitle = tvBoardTitle;
+    this.tvCurrentTurn = tvCurrentTurn;
+    this.tvOverlayTeamName = tvOverlayTeamName;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -88,9 +134,33 @@ public final class FragmentGameBoardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnStartRound;
+      Button btnStartRound = ViewBindings.findChildViewById(rootView, id);
+      if (btnStartRound == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonCorrect;
+      Button buttonCorrect = ViewBindings.findChildViewById(rootView, id);
+      if (buttonCorrect == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonSkip;
+      Button buttonSkip = ViewBindings.findChildViewById(rootView, id);
+      if (buttonSkip == null) {
+        break missingId;
+      }
+
       id = R.id.cvBoard;
       CardView cvBoard = ViewBindings.findChildViewById(rootView, id);
       if (cvBoard == null) {
+        break missingId;
+      }
+
+      id = R.id.gameOverlay;
+      CardView gameOverlay = ViewBindings.findChildViewById(rootView, id);
+      if (gameOverlay == null) {
         break missingId;
       }
 
@@ -100,14 +170,52 @@ public final class FragmentGameBoardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.scrollViewBoard;
+      ScrollView scrollViewBoard = ViewBindings.findChildViewById(rootView, id);
+      if (scrollViewBoard == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewScore;
+      TextView textViewScore = ViewBindings.findChildViewById(rootView, id);
+      if (textViewScore == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewTimer;
+      TextView textViewTimer = ViewBindings.findChildViewById(rootView, id);
+      if (textViewTimer == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewWord;
+      TextView textViewWord = ViewBindings.findChildViewById(rootView, id);
+      if (textViewWord == null) {
+        break missingId;
+      }
+
       id = R.id.tvBoardTitle;
       TextView tvBoardTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvBoardTitle == null) {
         break missingId;
       }
 
-      return new FragmentGameBoardBinding((ScrollView) rootView, boardContainer, btnBack, cvBoard,
-          pawnsContainer, tvBoardTitle);
+      id = R.id.tvCurrentTurn;
+      TextView tvCurrentTurn = ViewBindings.findChildViewById(rootView, id);
+      if (tvCurrentTurn == null) {
+        break missingId;
+      }
+
+      id = R.id.tvOverlayTeamName;
+      TextView tvOverlayTeamName = ViewBindings.findChildViewById(rootView, id);
+      if (tvOverlayTeamName == null) {
+        break missingId;
+      }
+
+      return new FragmentGameBoardBinding((ConstraintLayout) rootView, boardContainer, btnBack,
+          btnStartRound, buttonCorrect, buttonSkip, cvBoard, gameOverlay, pawnsContainer,
+          scrollViewBoard, textViewScore, textViewTimer, textViewWord, tvBoardTitle, tvCurrentTurn,
+          tvOverlayTeamName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

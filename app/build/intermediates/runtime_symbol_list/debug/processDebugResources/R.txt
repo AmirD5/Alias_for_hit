@@ -3820,12 +3820,14 @@ int id action_container 0x7f09003c
 int id action_context_bar 0x7f09003d
 int id action_divider 0x7f09003e
 int id action_gameBoardFragment_to_mainListFragment 0x7f09024c
+int id action_gameBoardFragment_to_resultFragment 0x7f09025d
 int id action_image 0x7f09003f
 int id action_menu_divider 0x7f090040
 int id action_menu_presenter 0x7f090041
 int id action_mode_bar 0x7f090042
 int id action_mode_bar_stub 0x7f090043
 int id action_mode_close_button 0x7f090044
+int id action_resultFragment_to_mainListFragment 0x7f09025f
 int id action_text 0x7f090045
 int id actions 0x7f090046
 int id activity_chooser_view_content 0x7f090047
@@ -3869,6 +3871,7 @@ int id bounceStart 0x7f09006c
 int id btnAbout 0x7f09006d
 int id btnBack 0x7f09006e
 int id btnCloseTooltip 0x7f09006f
+int id btnStartRound 0x7f090253
 int id btn_add_team 0x7f090070
 int id btn_delete 0x7f090071
 int id btn_edit 0x7f090072
@@ -3876,8 +3879,10 @@ int id btn_language_toggle 0x7f090073
 int id btn_pick_image 0x7f090074
 int id btn_save 0x7f090075
 int id btn_view_board 0x7f090076
+int id buttonCorrect 0x7f090254
 int id buttonHome 0x7f09024d
 int id buttonPanel 0x7f090077
+int id buttonSkip 0x7f090255
 int id buttonStartGame 0x7f090251
 int id buttonUploadScore 0x7f09024e
 int id cache_measures 0x7f090078
@@ -3993,6 +3998,7 @@ int id fragment_container_view_tag 0x7f0900e5
 int id frost 0x7f0900e6
 int id fullscreen_header 0x7f0900e7
 int id gameBoardFragment 0x7f0900e8
+int id gameOverlay 0x7f090256
 int id ghost_view 0x7f0900e9
 int id ghost_view_holder 0x7f0900ea
 int id glide_custom_view_target_tag 0x7f0900eb
@@ -4176,6 +4182,7 @@ int id ratio 0x7f09019c
 int id rectangles 0x7f09019d
 int id recycler_view 0x7f09019e
 int id report_drawn 0x7f09019f
+int id resultFragment 0x7f09025e
 int id retreat 0x7f0901a0
 int id reverseSawtooth 0x7f0901a1
 int id right 0x7f0901a2
@@ -4194,6 +4201,7 @@ int id scroll 0x7f0901ae
 int id scrollIndicatorDown 0x7f0901af
 int id scrollIndicatorUp 0x7f0901b0
 int id scrollView 0x7f0901b1
+int id scrollViewBoard 0x7f090257
 int id scrollable 0x7f0901b2
 int id search_badge 0x7f0901b3
 int id search_bar 0x7f0901b4
@@ -4273,8 +4281,11 @@ int id textSpacerNoButtons 0x7f0901fd
 int id textSpacerNoTitle 0x7f0901fe
 int id textStart 0x7f0901ff
 int id textTop 0x7f090200
+int id textViewScore 0x7f090258
+int id textViewTimer 0x7f090259
 int id textViewWinnerName 0x7f09024f
 int id textViewWinnerTitle 0x7f090250
+int id textViewWord 0x7f09025a
 int id text_input_end_icon 0x7f090201
 int id text_input_error_icon 0x7f090202
 int id text_input_start_icon 0x7f090203
@@ -4309,6 +4320,8 @@ int id transition_transform 0x7f09021f
 int id triangle 0x7f090220
 int id tvBoardTitle 0x7f090221
 int id tvCardNumber 0x7f090222
+int id tvCurrentTurn 0x7f09025b
+int id tvOverlayTeamName 0x7f09025c
 int id tvPawnTeamName 0x7f090223
 int id tvStartLabel 0x7f090224
 int id tvTeamName 0x7f090225

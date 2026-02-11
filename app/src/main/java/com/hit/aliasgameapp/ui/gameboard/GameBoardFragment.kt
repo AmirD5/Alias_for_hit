@@ -21,6 +21,8 @@ class GameBoardFragment : Fragment() {
     private var _binding: FragmentGameBoardBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: GameBoardViewModel
+    private var savedRandomNumbers: List<Int>? = null
+    private var savedBoardPositions: List<Pair<Float, Float>>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,25 +47,105 @@ class GameBoardFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        setupObservers()
-    }
+        viewModel.allTeams.observe(viewLifecycleOwner) { teams ->
+            if (teams != null && teams.isNotEmpty()) {
+                viewModel.initGame(teams)
 
-
-    private fun setupObservers() {
-        viewModel.boardSpaces.observe(viewLifecycleOwner) { spaces ->
-            if (spaces != null) {
-                drawBoard(spaces)
+                updatePawnsFromScore()
             }
         }
 
-        viewModel.teamPositions.observe(viewLifecycleOwner) { positions ->
-            if (positions != null) {
-                drawPawns(positions)
+        viewModel.currentWord.observe(viewLifecycleOwner) { word ->
+            binding.textViewWord.text = word
+        }
+
+        viewModel.timeLeft.observe(viewLifecycleOwner) { time ->
+            binding.textViewTimer.text = time.toString()
+        }
+
+        viewModel.currentScore.observe(viewLifecycleOwner) { score ->
+            binding.textViewScore.text = "Score: $score"
+            updatePawnsFromScore()
+        }
+
+        viewModel.currentTeamName.observe(viewLifecycleOwner) { name ->
+            binding.tvCurrentTurn.text = "Turn: $name"
+            binding.tvOverlayTeamName.text = name
+        }
+
+        binding.buttonCorrect.setOnClickListener {
+            viewModel.onCorrectAnswer()
+        }
+
+        binding.buttonSkip.setOnClickListener {
+            viewModel.onSkipWord()
+        }
+
+        binding.btnStartRound.setOnClickListener {
+            viewModel.startRound()
+        }
+
+        viewModel.isGameActive.observe(viewLifecycleOwner) { isActive ->
+            if (isActive) {
+                binding.gameOverlay.visibility = View.VISIBLE
+                binding.btnStartRound.visibility = View.GONE
+                binding.tvCurrentTurn.visibility = View.GONE
+                binding.btnBack.visibility = View.GONE
+            } else {
+                binding.gameOverlay.visibility = View.GONE
+                binding.btnStartRound.visibility = View.VISIBLE
+                binding.tvCurrentTurn.visibility = View.VISIBLE
+                binding.btnBack.visibility = View.VISIBLE
             }
+        }
+
+        if (!viewModel.isBoardAlreadyGenerated) {
+            savedRandomNumbers = generateRandomNumbers()
+            savedBoardPositions = calculatePositions()
+
+            drawBoard()
+            updatePawnsFromScore()
+
+            viewModel.isBoardAlreadyGenerated = true
+        } else {
+            drawBoard()
+            updatePawnsFromScore()
         }
     }
 
-    private fun drawBoard(@Suppress("UNUSED_PARAMETER") spaces: List<com.hit.aliasgameapp.data.model.BoardSpace>) {
+
+
+    private fun updatePawnsFromScore() {
+        val teams = viewModel.allTeams.value
+        if (teams.isNullOrEmpty()) return
+
+        val positionsMap = mutableMapOf<Int, com.hit.aliasgameapp.data.model.TeamPosition>()
+        val totalBoardSpaces = 23
+
+        teams.forEachIndexed { index, team ->
+            val currentScore = viewModel.getTeamTotalScore(index)
+
+            if (currentScore >= totalBoardSpaces - 1) {
+                showWinDialog(team.name, currentScore)
+                return
+            }
+
+            val positionData = com.hit.aliasgameapp.data.model.TeamPosition(
+                teamId = team.id,
+                teamName = team.name,
+                teamColor = team.color,
+                currentPosition = currentScore,
+                members = team.members ?: "",
+                currentPlayerIndex = 0
+            )
+            positionsMap[team.id] = positionData
+        }
+
+        drawPawns(positionsMap)
+    }
+
+
+    private fun drawBoard() {
         binding.boardContainer.removeAllViews()
 
         // Generate random numbers for positions (1-8)
@@ -72,6 +154,8 @@ class GameBoardFragment : Fragment() {
         // Calculate positions - just first row for now
         val positions = calculatePositions()
 
+        savedRandomNumbers = randomNumbers
+        savedBoardPositions = positions
         // Draw board spaces (no connecting lines for now)
         positions.forEachIndexed { index, (x, y) ->
             val circle = createBoardSpace(index, randomNumbers[index])
@@ -276,13 +360,29 @@ class GameBoardFragment : Fragment() {
         }
     }
     private fun navigateToResult(winnerName: String, score: Int) {
-        val bundle = android.os.Bundle().apply {
+        val bundle = Bundle().apply {
             putString("winnerName", winnerName)
             putInt("score", score)
         }
-        findNavController().navigate(R.id.action_gameBoardFragment_to_mainListFragment, bundle)
+
+        findNavController().navigate(R.id.action_gameBoardFragment_to_resultFragment, bundle)
     }
 
+    private fun showWinDialog(winnerName: String, score: Int) {
+        if (viewModel.isGameFinished) return
+        viewModel.isGameFinished = true
+
+        viewModel.endGame()
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("🎉 WE HAVE A WINNER! 🎉")
+            .setMessage("Team $winnerName reached the finish line!")
+            .setCancelable(false)
+            .setPositiveButton("See Results") { _, _ ->
+                navigateToResult(winnerName, score)
+            }
+            .show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

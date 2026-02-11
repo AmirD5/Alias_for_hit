@@ -1,6 +1,7 @@
 package com.hit.aliasgameapp.viewmodel
 
 import android.app.Application
+import android.os.CountDownTimer
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,6 +21,51 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val _boardSpaces = MutableLiveData<List<BoardSpace>>()
     val boardSpaces: LiveData<List<BoardSpace>> = _boardSpaces
+
+    private val _currentWord = MutableLiveData<String>()
+    val currentWord: LiveData<String> = _currentWord
+
+    private val _timeLeft = MutableLiveData<Int>()
+    val timeLeft: LiveData<Int> = _timeLeft
+
+    private val _currentScore = MutableLiveData<Int>()
+    val currentScore: LiveData<Int> = _currentScore
+
+    private val _currentTeamName = MutableLiveData<String>()
+    val currentTeamName: LiveData<String> = _currentTeamName
+
+    private val _isGameActive = MutableLiveData<Boolean>(false)
+    val isGameActive: LiveData<Boolean> = _isGameActive
+
+    private var timer: CountDownTimer? = null
+    private var teamsList: List<Team> = emptyList()
+    private var currentTeamIndex = 0
+    private var roundScore = 0
+    var isBoardAlreadyGenerated = false
+
+    private val teamTotalScores = mutableMapOf<Int, Int>()
+
+    var isGameFinished = false
+
+    fun endGame() {
+        _isGameActive.value = false
+        timer?.cancel()
+    }
+
+    private val wordList = listOf(
+        "גלידה", "שמש", "כדורגל", "מחשב", "אוניברסיטה", "ים", "פיצה",
+        "טלפון", "כלב", "חתול", "מטוס", "ישראל", "גיטרה", "חופש"
+    ).shuffled()
+
+    private var wordIndex = 0
+
+    fun getCurrentTeamIndex(): Int {
+        return currentTeamIndex
+    }
+
+    fun getTeamTotalScore(index: Int): Int {
+        return teamTotalScores[index] ?: 0
+    }
 
     init {
         initializeBoardSpaces()
@@ -92,6 +138,93 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
         } else {
             null
         }
+    }
+
+    fun startGame(teams: List<Team>) {
+        if (teams.isEmpty()) return
+        teamsList = teams
+        currentTeamIndex = 0
+        startRound()
+    }
+
+    fun startRound() {
+        val currentTeam = teamsList[currentTeamIndex]
+        _currentTeamName.value = currentTeam.name
+        roundScore = 0
+        _currentScore.value = roundScore
+        _isGameActive.value = true
+
+        nextWord()
+        startTimer()
+    }
+
+    private fun nextWord() {
+        if (wordIndex >= wordList.size) {
+            wordIndex = 0
+        }
+        _currentWord.value = wordList[wordIndex]
+        wordIndex++
+    }
+
+    private fun startTimer() {
+        timer?.cancel()
+        timer = object : CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                _timeLeft.value = (millisUntilFinished / 1000).toInt()
+            }
+
+            override fun onFinish() {
+                _timeLeft.value = 0
+                _isGameActive.value = false
+                advanceTurn()
+            }
+        }.start()
+    }
+
+    fun onCorrectAnswer() {
+        roundScore++
+        _currentScore.value = roundScore
+        val currentTotal = (teamTotalScores[currentTeamIndex] ?: 0) + 1
+        teamTotalScores[currentTeamIndex] = currentTotal
+
+        nextWord()
+    }
+
+    fun onSkipWord() {
+        roundScore = (roundScore - 1).coerceAtLeast(0)
+        _currentScore.value = roundScore
+        nextWord()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        timer?.cancel()
+    }
+
+    fun initGame(teams: List<Team>) {
+        if (teamsList.isNotEmpty()) return
+
+        teamsList = teams
+        currentTeamIndex = 0
+        _currentTeamName.value = teamsList[currentTeamIndex].name
+    }
+
+    fun advanceTurn() {
+        if (teamsList.isNotEmpty()) {
+            currentTeamIndex = (currentTeamIndex + 1) % teamsList.size
+            _currentTeamName.value = teamsList[currentTeamIndex].name
+        }
+    }
+
+
+    fun endRound() {
+        _isGameActive.value = false
+        timer?.cancel()
+
+        val currentTotal = teamTotalScores[currentTeamIndex] ?: 0
+        teamTotalScores[currentTeamIndex] = currentTotal + roundScore
+
+        advanceTurn()
     }
 }
 

@@ -49,5 +49,16 @@
         <action
             android:id="@+id/action_gameBoardFragment_to_mainListFragment"
             app:destination="@id/mainListFragment" />
+        <action
+            android:id="@+id/action_gameBoardFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.hit.aliasgameapp.ui.result.ResultFragment"
+        android:label="ResultFragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_mainListFragment"
+            app:destination="@id/mainListFragment" />
     </fragment>
 </navigation>

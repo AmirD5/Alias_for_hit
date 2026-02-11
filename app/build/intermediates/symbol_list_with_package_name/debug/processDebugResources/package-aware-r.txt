@@ -3821,12 +3821,14 @@ id action_container
 id action_context_bar
 id action_divider
 id action_gameBoardFragment_to_mainListFragment
+id action_gameBoardFragment_to_resultFragment
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_resultFragment_to_mainListFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3870,6 +3872,7 @@ id bounceStart
 id btnAbout
 id btnBack
 id btnCloseTooltip
+id btnStartRound
 id btn_add_team
 id btn_delete
 id btn_edit
@@ -3877,8 +3880,10 @@ id btn_language_toggle
 id btn_pick_image
 id btn_save
 id btn_view_board
+id buttonCorrect
 id buttonHome
 id buttonPanel
+id buttonSkip
 id buttonStartGame
 id buttonUploadScore
 id cache_measures
@@ -3994,6 +3999,7 @@ id fragment_container_view_tag
 id frost
 id fullscreen_header
 id gameBoardFragment
+id gameOverlay
 id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
@@ -4177,6 +4183,7 @@ id ratio
 id rectangles
 id recycler_view
 id report_drawn
+id resultFragment
 id retreat
 id reverseSawtooth
 id right
@@ -4195,6 +4202,7 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scrollViewBoard
 id scrollable
 id search_badge
 id search_bar
@@ -4274,8 +4282,11 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewScore
+id textViewTimer
 id textViewWinnerName
 id textViewWinnerTitle
+id textViewWord
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -4310,6 +4321,8 @@ id transition_transform
 id triangle
 id tvBoardTitle
 id tvCardNumber
+id tvCurrentTurn
+id tvOverlayTeamName
 id tvPawnTeamName
 id tvStartLabel
 id tvTeamName
