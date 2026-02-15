@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.hit.aliasgameapp.data.dao.TeamDao
 import com.hit.aliasgameapp.data.model.Team
+import com.hit.aliasgameapp.data.dao.WordDao
+import com.hit.aliasgameapp.data.model.WordEntity
 
-@Database(entities = [Team::class], version = 2, exportSchema = false)
+@Database(entities = [WordEntity::class,Team::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun teamDao(): TeamDao
+    abstract fun wordDao(): WordDao
 
     companion object {
         @Volatile

@@ -43,6 +43,8 @@ class GameBoardFragment : Fragment() {
 
         binding.cvBoard.layoutDirection = View.LAYOUT_DIRECTION_LTR
 
+
+
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -83,6 +85,10 @@ class GameBoardFragment : Fragment() {
 
         binding.btnStartRound.setOnClickListener {
             viewModel.startRound()
+        }
+
+        binding.btnDrawCard.setOnClickListener {
+            findNavController().navigate(R.id.gameCardFragment)
         }
 
         viewModel.isGameActive.observe(viewLifecycleOwner) { isActive ->

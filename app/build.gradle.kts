@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -67,6 +68,19 @@ dependencies {
 
     implementation(libs.glide)
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Retrofit (Network)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Hilt (Dependency Injection)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.javax.inject)
+
+
+
+
+    //implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

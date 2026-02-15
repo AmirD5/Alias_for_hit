@@ -36,6 +36,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/gameCardFragment"
+        android:name="com.hit.aliasgameapp.ui.cards.GameCardFragment"
+        android:label="Game Cards"
+        tools:layout="@layout/fragment_game_card"/>
+
+
+    <fragment
         android:id="@+id/aboutFragment"
     android:name="com.hit.aliasgameapp.ui.about.AboutFragment"
     android:label="About"
