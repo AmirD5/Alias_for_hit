@@ -213,6 +213,7 @@ string failed_to_save_photo
 string fetching_random_image
 string forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word
 string game_board
+string game_board_
 string goal
 string green
 string group_members

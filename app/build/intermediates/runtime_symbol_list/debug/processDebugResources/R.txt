@@ -4690,6 +4690,7 @@ int string failed_to_save_photo 0x7f11004a
 int string fetching_random_image 0x7f110103
 int string forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word 0x7f11004b
 int string game_board 0x7f11004c
+int string game_board_ 0x7f110117
 int string goal 0x7f11004d
 int string green 0x7f11004e
 int string group_members 0x7f11004f

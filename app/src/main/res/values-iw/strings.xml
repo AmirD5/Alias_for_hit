@@ -118,4 +118,5 @@
     <string name="incorrect">טעות</string>
     <string name="correct">נכון</string>
     <string name="start_game">התחל משחק</string>
+    <string name="game_board_">לוח המשחק</string>
 </resources>

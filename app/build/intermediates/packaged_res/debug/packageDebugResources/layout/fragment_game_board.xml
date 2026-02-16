@@ -33,7 +33,7 @@
                 android:id="@+id/tvBoardTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Game Board"
+                android:text="@string/game_board_"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/primary"

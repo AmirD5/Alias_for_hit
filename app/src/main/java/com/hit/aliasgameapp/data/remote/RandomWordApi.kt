@@ -5,9 +5,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RandomWordApi {
-    // Make sure 'suspend' is here and the name is 'getGameWords'
-    @GET("word")
+    @GET("random/noun")
     suspend fun getGameWords(
-        @Query("number") count: Int
+        @Query("count") count: Int
     ): Response<List<String>>
 }

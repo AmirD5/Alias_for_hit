@@ -91,6 +91,7 @@
     <string name="fetching_random_image">Fetching random image...</string>
     <string name="forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word">❌Forbidden explanation: \'We see this star on a sunny day.\' (use of the root of the word).</string>
     <string name="game_board">Game Board</string>
+    <string name="game_board_">Game Board</string>
     <string name="goal">Goal</string>
     <string name="green">Green</string>
     <string name="group_members">Group members</string>

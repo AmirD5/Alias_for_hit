@@ -13,36 +13,42 @@ class GameRepository @Inject constructor(
 
     suspend fun getCardWords(): Result<List<String>> {
         return try {
-            // 1. START NEW GAME: If DB is empty, fetch 240 words
-            try {
-                val response = api.getGameWords(240)
-                if (response.isSuccessful && response.body() != null) {
-                    val entities = response.body()!!.map { WordEntity(word = it) }
-                    wordDao.insertAll(entities)
+            var wordCount = wordDao.getWordCount()
+
+            if (wordCount < 20) {
+                try {
+                    val response = api.getGameWords(500)
+                    if (response.isSuccessful && response.body() != null) {
+                        val entities = response.body()!!.map { WordEntity(word = it) }
+                        wordDao.insertAll(entities)
+                    }
+                } catch (e: Exception) {
+                    Log.e("GameRepo", "Internet failed, using backup: ${e.message}")
                 }
-            } catch (e: Exception) {
-                Log.e("GameRepo", "Internet failed: ${e.message}")
+
+                wordCount = wordDao.getWordCount()
             }
-            // try again, if fails get from backup list
-            if (wordDao.getWordCount() == 0) {
+
+            if (wordCount < 8) {
                 val backupWords = getBackupList().map { WordEntity(word = it) }
                 wordDao.insertAll(backupWords)
             }
 
-            // 2. DRAW: Get 8 random words
             val wordEntities = wordDao.getRandomCardWords()
 
-            if (wordEntities.size == 8) {
-                // 3. DISCARD: Delete them so they are unique
+            if (wordEntities.isNotEmpty()) {
                 wordDao.deleteWords(wordEntities)
 
-                // 4. RETURN: Give the strings to the UI
                 val wordStrings = wordEntities.map { it.word }
+
+                if (wordStrings.size < 8) {
+                    val backupWords = getBackupList().map { WordEntity(word = it) }
+                    wordDao.insertAll(backupWords)
+                }
+
                 Result.success(wordStrings)
             } else {
-                // If fewer than 8 words, the deck is empty (Game Over)
-                wordDao.deleteAll() // Clean up any leftovers
-                Result.failure(Exception("Game Over! Deck is empty."))
+                Result.success(listOf("Error", "Loading", "Problem", "With", "Data", "Please", "Restart", "Game"))
             }
         } catch (e: Exception) {
             Result.failure(e)

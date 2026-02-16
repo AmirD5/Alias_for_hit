@@ -44,6 +44,7 @@
     <string name="fetching_random_image">בוחר תמונה אקראית...</string>
     <string name="forbidden_explanation_we_see_this_star_on_a_sunny_day_use_of_the_root_of_the_word">❌ הסבר פסול: \'אנחנו רואים את הכוכב הזה ביום שמשי.\' (שימוש של שורש המילה).</string>
     <string name="game_board">לוח המשחק</string>
+    <string name="game_board_">לוח המשחק</string>
     <string name="goal">מטרה</string>
     <string name="green">ירוק</string>
     <string name="group_members">משתתפי הקבוצה</string>
