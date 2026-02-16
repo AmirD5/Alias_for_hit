@@ -125,30 +125,30 @@ public final class TeamDao_Impl implements TeamDao {
   }
 
   @Override
-  public Object insert(final Team team, final Continuation<? super Unit> arg1) {
+  public Object insert(final Team team, final Continuation<? super Unit> $completion) {
     if (team == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfTeam.insert(_connection, team);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object delete(final Team team, final Continuation<? super Unit> arg1) {
+  public Object delete(final Team team, final Continuation<? super Unit> $completion) {
     if (team == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfTeam.handle(_connection, team);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object update(final Team team, final Continuation<? super Unit> arg1) {
+  public Object update(final Team team, final Continuation<? super Unit> $completion) {
     if (team == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __updateAdapterOfTeam.handle(_connection, team);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -209,7 +209,7 @@ public final class TeamDao_Impl implements TeamDao {
   }
 
   @Override
-  public Object getTeamById(final int id, final Continuation<? super Team> arg1) {
+  public Object getTeamById(final int id, final Continuation<? super Team> $completion) {
     final String _sql = "SELECT * FROM teams WHERE id = ?";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -264,7 +264,7 @@ public final class TeamDao_Impl implements TeamDao {
       } finally {
         _stmt.close();
       }
-    }, arg1);
+    }, $completion);
   }
 
   @NonNull
