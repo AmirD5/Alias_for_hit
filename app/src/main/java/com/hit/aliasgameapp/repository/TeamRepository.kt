@@ -17,6 +17,8 @@ class TeamRepository(context: Context) {
 
     val allTeams: LiveData<List<Team>> = dao.getAllTeams()
 
+
+
     suspend fun insert(team: Team) = dao.insert(team)
 
     suspend fun update(team: Team) = dao.update(team)

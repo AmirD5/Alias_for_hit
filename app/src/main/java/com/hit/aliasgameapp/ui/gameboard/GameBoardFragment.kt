@@ -15,14 +15,16 @@ import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.databinding.FragmentGameBoardBinding
 import com.hit.aliasgameapp.viewmodel.GameBoardViewModel
 import kotlin.random.Random
+import androidx.fragment.app.activityViewModels
 
 class GameBoardFragment : Fragment() {
 
     private var _binding: FragmentGameBoardBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: GameBoardViewModel
     private var savedRandomNumbers: List<Int>? = null
     private var savedBoardPositions: List<Pair<Float, Float>>? = null
+
+    private val viewModel: GameBoardViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,14 +38,7 @@ class GameBoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )[GameBoardViewModel::class.java]
-
         binding.cvBoard.layoutDirection = View.LAYOUT_DIRECTION_LTR
-
-
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
@@ -52,57 +47,36 @@ class GameBoardFragment : Fragment() {
         viewModel.allTeams.observe(viewLifecycleOwner) { teams ->
             if (teams != null && teams.isNotEmpty()) {
                 viewModel.initGame(teams)
-
                 updatePawnsFromScore()
             }
         }
 
-        viewModel.currentWord.observe(viewLifecycleOwner) { word ->
-            binding.textViewWord.text = word
-        }
 
-        viewModel.timeLeft.observe(viewLifecycleOwner) { time ->
-            binding.textViewTimer.text = time.toString()
+        parentFragmentManager.setFragmentResultListener("roundRequest", viewLifecycleOwner) { _, bundle ->
+            val score = bundle.getInt("roundScore")
+
+            viewModel.applyRoundScore(score)
+
+            updatePawnsFromScore()
         }
 
         viewModel.currentScore.observe(viewLifecycleOwner) { score ->
-            binding.textViewScore.text = "Score: $score"
+            binding.textViewScore.text = getString(R.string.score, score)
             updatePawnsFromScore()
         }
 
         viewModel.currentTeamName.observe(viewLifecycleOwner) { name ->
-            binding.tvCurrentTurn.text = "Turn: $name"
+            binding.tvCurrentTurn.text = getString(R.string.turn, name)
             binding.tvOverlayTeamName.text = name
         }
 
-        binding.buttonCorrect.setOnClickListener {
-            viewModel.onCorrectAnswer()
-        }
-
-        binding.buttonSkip.setOnClickListener {
-            viewModel.onSkipWord()
-        }
-
-        binding.btnStartRound.setOnClickListener {
-            viewModel.startRound()
-        }
+        binding.gameOverlay.visibility = View.GONE
+        binding.btnStartRound.visibility = View.GONE
+        binding.buttonCorrect.visibility = View.GONE
+        binding.buttonSkip.visibility = View.GONE
 
         binding.btnDrawCard.setOnClickListener {
             findNavController().navigate(R.id.gameCardFragment)
-        }
-
-        viewModel.isGameActive.observe(viewLifecycleOwner) { isActive ->
-            if (isActive) {
-                binding.gameOverlay.visibility = View.VISIBLE
-                binding.btnStartRound.visibility = View.GONE
-                binding.tvCurrentTurn.visibility = View.GONE
-                binding.btnBack.visibility = View.GONE
-            } else {
-                binding.gameOverlay.visibility = View.GONE
-                binding.btnStartRound.visibility = View.VISIBLE
-                binding.tvCurrentTurn.visibility = View.VISIBLE
-                binding.btnBack.visibility = View.VISIBLE
-            }
         }
 
         if (!viewModel.isBoardAlreadyGenerated) {
@@ -126,12 +100,12 @@ class GameBoardFragment : Fragment() {
         if (teams.isNullOrEmpty()) return
 
         val positionsMap = mutableMapOf<Int, com.hit.aliasgameapp.data.model.TeamPosition>()
-        val totalBoardSpaces = 23
+        val lastBoardIndex = 21
 
         teams.forEachIndexed { index, team ->
             val currentScore = viewModel.getTeamTotalScore(index)
 
-            if (currentScore >= totalBoardSpaces - 1) {
+            if (currentScore >= lastBoardIndex) {
                 showWinDialog(team.name, currentScore)
                 return
             }
@@ -323,9 +297,9 @@ class GameBoardFragment : Fragment() {
         // Build message with position, card number, and highlighted reader
         val message = buildString {
             // Show position and card number
-            append("Position: $position")
+            append(getString(R.string.position, position))
             if (cardNumber > 0) {
-                append("\nCard Number: $cardNumber")
+                append(getString(R.string.card_number, cardNumber))
             }
             append("\n\n")
             append(getString(R.string.team_members))
@@ -381,10 +355,10 @@ class GameBoardFragment : Fragment() {
         viewModel.endGame()
 
         AlertDialog.Builder(requireContext())
-            .setTitle("🎉 WE HAVE A WINNER! 🎉")
-            .setMessage("Team $winnerName reached the finish line!")
+            .setTitle(getString(R.string.we_have_a_winner))
+            .setMessage(getString(R.string.team_reached_the_finish_line, winnerName))
             .setCancelable(false)
-            .setPositiveButton("See Results") { _, _ ->
+            .setPositiveButton(getString(R.string.see_results)) { _, _ ->
                 navigateToResult(winnerName, score)
             }
             .show()

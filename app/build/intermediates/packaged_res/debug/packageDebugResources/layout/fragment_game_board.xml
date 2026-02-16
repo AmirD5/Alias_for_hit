@@ -75,6 +75,21 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+
+            <ImageButton
+                android:id="@+id/btnDrawCard"
+                android:elevation="20dp"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:src="@drawable/cards"
+                android:scaleType="fitCenter"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="150dp"
+                 />
+
             <TextView
                 android:id="@+id/tvCurrentTurn"
                 android:layout_width="wrap_content"
@@ -190,6 +205,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

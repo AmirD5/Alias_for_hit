@@ -213,6 +213,8 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
         if (teamsList.isNotEmpty()) {
             currentTeamIndex = (currentTeamIndex + 1) % teamsList.size
             _currentTeamName.value = teamsList[currentTeamIndex].name
+
+            _currentScore.value = 0
         }
     }
 
@@ -223,6 +225,16 @@ class GameBoardViewModel(application: Application) : AndroidViewModel(applicatio
 
         val currentTotal = teamTotalScores[currentTeamIndex] ?: 0
         teamTotalScores[currentTeamIndex] = currentTotal + roundScore
+
+        advanceTurn()
+    }
+
+    fun applyRoundScore(score: Int) {
+        if (teamsList.isEmpty()) return
+
+        val currentTotal = teamTotalScores[currentTeamIndex] ?: 0
+        val newTotal = currentTotal + score
+        teamTotalScores[currentTeamIndex] = newTotal
 
         advanceTurn()
     }

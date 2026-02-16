@@ -42,7 +42,7 @@ class TeamAdapter(
                 team.color
             }
 
-            binding.tvColor.text = displayColorName.ifEmpty { "No color" }
+            binding.tvColor.text = displayColorName.ifEmpty { context.getString(R.string.no_color) }
 
 
             // Apply the team color to the team name and color indicator
@@ -52,7 +52,12 @@ class TeamAdapter(
             binding.colorIndicator.setBackgroundColor(color)
 
             if (team.imagePath != null) {
-                binding.ivImage.setImageURI(team.imagePath.toUri())
+                com.bumptech.glide.Glide.with(binding.root.context)
+                    .load(team.imagePath)
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .error(android.R.drawable.ic_delete)
+                    .circleCrop()
+                    .into(binding.ivImage)
             } else {
                 binding.ivImage.setImageResource(android.R.drawable.ic_menu_gallery)
             }

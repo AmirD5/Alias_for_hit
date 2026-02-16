@@ -1,5 +1,7 @@
 package com.hit.aliasgameapp.ui.addedit
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +16,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.data.model.Team
+import com.hit.aliasgameapp.data.remote.ImageApi
+import com.hit.aliasgameapp.data.remote.NameApi
+import com.hit.aliasgameapp.data.remote.RandomWordApi
 import com.hit.aliasgameapp.databinding.FragmentAddEditBinding
 import com.hit.aliasgameapp.viewmodel.TeamViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import java.net.URL
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AddEditFragment : Fragment() {
 
     private var _binding: FragmentAddEditBinding? = null
@@ -32,6 +43,11 @@ class AddEditFragment : Fragment() {
 
     private var originalImagePath: String? = null
     private var isSaved: Boolean = false
+
+    @Inject
+    lateinit var randomWordApi: RandomWordApi
+    @Inject lateinit var nameApi: NameApi
+    @Inject lateinit var imageApi: ImageApi
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let { copyImageToInternalStorage(it) }
@@ -92,22 +108,37 @@ class AddEditFragment : Fragment() {
                     binding.etNotes.setText(it.notes)
                     currentPhotoPath = it.imagePath
                     originalImagePath = it.imagePath
+
+                    if (currentPhotoPath != null) {
+                        binding.ivCardImage.setImageURI(currentPhotoPath!!.toUri())
+                    }
                 }
             }
         }
-        if (currentPhotoPath != null) {
-            binding.ivCardImage.setImageURI(currentPhotoPath!!.toUri())
-        }
+
+
 
         binding.btnPickImage.setOnClickListener {
             pickImage.launch("image/*")
         }
+        binding.btnPickRandomImage.setOnClickListener {
+            generateRandomImage()
+        }
+
+        binding.btnPickName.setOnClickListener {
+            generateRandomName()
+        }
+
+
+
 
         binding.btnSave.setOnClickListener {
             val name = binding.etName.text.toString().trim()
             val dbColors = resources.getStringArray(R.array.team_colors_db)
             val selectedPosition = binding.spinnerColor.selectedItemPosition
-            val color = if (selectedPosition in dbColors.indices) dbColors[selectedPosition] else "Black"
+            val color = if (selectedPosition in dbColors.indices) dbColors[selectedPosition] else getString(
+                R.string.black
+            )
             val notes = binding.etNotes.text.toString().trim()
             val members = binding.etMembers.text.toString().trim()
 
@@ -139,6 +170,58 @@ class AddEditFragment : Fragment() {
 
             findNavController().navigateUp()
             isSaved = true
+        }
+    }
+
+    private fun generateRandomImage() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = imageApi.downloadImage("https://picsum.photos/300")
+
+                if (response.isSuccessful && response.body() != null) {
+                    val inputStream = response.body()!!.byteStream()
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+
+                    if (bitmap != null) {
+                        val file = File(requireContext().filesDir, "team_retro_${System.currentTimeMillis()}.jpg")
+                        FileOutputStream(file).use { out ->
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)
+                        }
+
+                        withContext(Dispatchers.Main) {
+                            if (currentPhotoPath != null && currentPhotoPath != originalImagePath) {
+                                File(currentPhotoPath!!).delete()
+                            }
+                            currentPhotoPath = file.absolutePath
+                            binding.ivCardImage.setImageURI(file.toUri())
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context,
+                        getString(R.string.failed, e.message), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+    private fun generateRandomName() {
+        lifecycleScope.launch {
+            try {
+                val response = nameApi.getRandomName()
+
+                if (response.isSuccessful && response.body() != null) {
+                    val result = response.body()!!.results.firstOrNull()
+                    if (result != null) {
+                        val fullName = "${result.name.first} ${result.name.last}"
+                        binding.etName.setText(fullName.replaceFirstChar { it.uppercase() })
+                    }
+                } else {
+                    Toast.makeText(context, R.string.try_again, Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(context, getString(R.string.error, e.message), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

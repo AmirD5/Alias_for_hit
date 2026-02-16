@@ -11,6 +11,8 @@ import androidx.sqlite.SQLite;
 import androidx.sqlite.SQLiteConnection;
 import com.hit.aliasgameapp.data.dao.TeamDao;
 import com.hit.aliasgameapp.data.dao.TeamDao_Impl;
+import com.hit.aliasgameapp.data.dao.WordDao;
+import com.hit.aliasgameapp.data.dao.WordDao_Impl;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -28,19 +30,23 @@ import javax.annotation.processing.Generated;
 public final class AppDatabase_Impl extends AppDatabase {
   private volatile TeamDao _teamDao;
 
+  private volatile WordDao _wordDao;
+
   @Override
   @NonNull
   protected RoomOpenDelegate createOpenDelegate() {
-    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(2, "7e96e6fae5c93ea8afa5393f8a9ddc76", "084c20166d721682ddcba99416b5a1ae") {
+    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(3, "c60a7a5c35b6301d7973c6eaaa918fd9", "25d684397867a2574f04f523146986f5") {
       @Override
       public void createAllTables(@NonNull final SQLiteConnection connection) {
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `words_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `word` TEXT NOT NULL)");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `teams` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `color` TEXT NOT NULL, `members` TEXT NOT NULL, `notes` TEXT NOT NULL, `imagePath` TEXT)");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7e96e6fae5c93ea8afa5393f8a9ddc76')");
+        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c60a7a5c35b6301d7973c6eaaa918fd9')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SQLiteConnection connection) {
+        SQLite.execSQL(connection, "DROP TABLE IF EXISTS `words_table`");
         SQLite.execSQL(connection, "DROP TABLE IF EXISTS `teams`");
       }
 
@@ -66,6 +72,18 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenDelegate.ValidationResult onValidateSchema(
           @NonNull final SQLiteConnection connection) {
+        final Map<String, TableInfo.Column> _columnsWordsTable = new HashMap<String, TableInfo.Column>(2);
+        _columnsWordsTable.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsWordsTable.put("word", new TableInfo.Column("word", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final Set<TableInfo.ForeignKey> _foreignKeysWordsTable = new HashSet<TableInfo.ForeignKey>(0);
+        final Set<TableInfo.Index> _indicesWordsTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoWordsTable = new TableInfo("words_table", _columnsWordsTable, _foreignKeysWordsTable, _indicesWordsTable);
+        final TableInfo _existingWordsTable = TableInfo.read(connection, "words_table");
+        if (!_infoWordsTable.equals(_existingWordsTable)) {
+          return new RoomOpenDelegate.ValidationResult(false, "words_table(com.hit.aliasgameapp.data.model.WordEntity).\n"
+                  + " Expected:\n" + _infoWordsTable + "\n"
+                  + " Found:\n" + _existingWordsTable);
+        }
         final Map<String, TableInfo.Column> _columnsTeams = new HashMap<String, TableInfo.Column>(6);
         _columnsTeams.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTeams.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -93,12 +111,12 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final Map<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final Map<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "teams");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "words_table", "teams");
   }
 
   @Override
   public void clearAllTables() {
-    super.performClear(false, "teams");
+    super.performClear(false, "words_table", "teams");
   }
 
   @Override
@@ -106,6 +124,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final Map<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(TeamDao.class, TeamDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(WordDao.class, WordDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -134,6 +153,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _teamDao = new TeamDao_Impl(this);
         }
         return _teamDao;
+      }
+    }
+  }
+
+  @Override
+  public WordDao wordDao() {
+    if (_wordDao != null) {
+      return _wordDao;
+    } else {
+      synchronized(this) {
+        if(_wordDao == null) {
+          _wordDao = new WordDao_Impl(this);
+        }
+        return _wordDao;
       }
     }
   }

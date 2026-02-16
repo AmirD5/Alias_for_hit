@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public final class FragmentGameBoardBinding implements ViewBinding {
 
   @NonNull
   public final FloatingActionButton btnBack;
+
+  @NonNull
+  public final ImageButton btnDrawCard;
 
   @NonNull
   public final Button btnStartRound;
@@ -71,15 +75,17 @@ public final class FragmentGameBoardBinding implements ViewBinding {
 
   private FragmentGameBoardBinding(@NonNull ConstraintLayout rootView,
       @NonNull RelativeLayout boardContainer, @NonNull FloatingActionButton btnBack,
-      @NonNull Button btnStartRound, @NonNull Button buttonCorrect, @NonNull Button buttonSkip,
-      @NonNull CardView cvBoard, @NonNull CardView gameOverlay,
-      @NonNull RelativeLayout pawnsContainer, @NonNull ScrollView scrollViewBoard,
-      @NonNull TextView textViewScore, @NonNull TextView textViewTimer,
-      @NonNull TextView textViewWord, @NonNull TextView tvBoardTitle,
-      @NonNull TextView tvCurrentTurn, @NonNull TextView tvOverlayTeamName) {
+      @NonNull ImageButton btnDrawCard, @NonNull Button btnStartRound,
+      @NonNull Button buttonCorrect, @NonNull Button buttonSkip, @NonNull CardView cvBoard,
+      @NonNull CardView gameOverlay, @NonNull RelativeLayout pawnsContainer,
+      @NonNull ScrollView scrollViewBoard, @NonNull TextView textViewScore,
+      @NonNull TextView textViewTimer, @NonNull TextView textViewWord,
+      @NonNull TextView tvBoardTitle, @NonNull TextView tvCurrentTurn,
+      @NonNull TextView tvOverlayTeamName) {
     this.rootView = rootView;
     this.boardContainer = boardContainer;
     this.btnBack = btnBack;
+    this.btnDrawCard = btnDrawCard;
     this.btnStartRound = btnStartRound;
     this.buttonCorrect = buttonCorrect;
     this.buttonSkip = buttonSkip;
@@ -131,6 +137,12 @@ public final class FragmentGameBoardBinding implements ViewBinding {
       id = R.id.btnBack;
       FloatingActionButton btnBack = ViewBindings.findChildViewById(rootView, id);
       if (btnBack == null) {
+        break missingId;
+      }
+
+      id = R.id.btnDrawCard;
+      ImageButton btnDrawCard = ViewBindings.findChildViewById(rootView, id);
+      if (btnDrawCard == null) {
         break missingId;
       }
 
@@ -213,9 +225,9 @@ public final class FragmentGameBoardBinding implements ViewBinding {
       }
 
       return new FragmentGameBoardBinding((ConstraintLayout) rootView, boardContainer, btnBack,
-          btnStartRound, buttonCorrect, buttonSkip, cvBoard, gameOverlay, pawnsContainer,
-          scrollViewBoard, textViewScore, textViewTimer, textViewWord, tvBoardTitle, tvCurrentTurn,
-          tvOverlayTeamName);
+          btnDrawCard, btnStartRound, buttonCorrect, buttonSkip, cvBoard, gameOverlay,
+          pawnsContainer, scrollViewBoard, textViewScore, textViewTimer, textViewWord, tvBoardTitle,
+          tvCurrentTurn, tvOverlayTeamName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

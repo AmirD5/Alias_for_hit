@@ -32,6 +32,12 @@ public final class FragmentAddEditBinding implements ViewBinding {
   public final Button btnPickImage;
 
   @NonNull
+  public final Button btnPickName;
+
+  @NonNull
+  public final Button btnPickRandomImage;
+
+  @NonNull
   public final Button btnSave;
 
   @NonNull
@@ -62,7 +68,8 @@ public final class FragmentAddEditBinding implements ViewBinding {
   public final TextView tvColorLabel;
 
   private FragmentAddEditBinding(@NonNull ScrollView rootView,
-      @NonNull FloatingActionButton btnBack, @NonNull Button btnPickImage, @NonNull Button btnSave,
+      @NonNull FloatingActionButton btnBack, @NonNull Button btnPickImage,
+      @NonNull Button btnPickName, @NonNull Button btnPickRandomImage, @NonNull Button btnSave,
       @NonNull TextInputEditText etMembers, @NonNull TextInputEditText etName,
       @NonNull TextInputEditText etNotes, @NonNull ShapeableImageView ivCardImage,
       @NonNull Spinner spinnerColor, @NonNull TextInputLayout tilMembers,
@@ -71,6 +78,8 @@ public final class FragmentAddEditBinding implements ViewBinding {
     this.rootView = rootView;
     this.btnBack = btnBack;
     this.btnPickImage = btnPickImage;
+    this.btnPickName = btnPickName;
+    this.btnPickRandomImage = btnPickRandomImage;
     this.btnSave = btnSave;
     this.etMembers = etMembers;
     this.etName = etName;
@@ -119,6 +128,18 @@ public final class FragmentAddEditBinding implements ViewBinding {
       id = R.id.btn_pick_image;
       Button btnPickImage = ViewBindings.findChildViewById(rootView, id);
       if (btnPickImage == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_pick_name;
+      Button btnPickName = ViewBindings.findChildViewById(rootView, id);
+      if (btnPickName == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_pick_random_image;
+      Button btnPickRandomImage = ViewBindings.findChildViewById(rootView, id);
+      if (btnPickRandomImage == null) {
         break missingId;
       }
 
@@ -182,9 +203,9 @@ public final class FragmentAddEditBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAddEditBinding((ScrollView) rootView, btnBack, btnPickImage, btnSave,
-          etMembers, etName, etNotes, ivCardImage, spinnerColor, tilMembers, tilName, tilNotes,
-          tvColorLabel);
+      return new FragmentAddEditBinding((ScrollView) rootView, btnBack, btnPickImage, btnPickName,
+          btnPickRandomImage, btnSave, etMembers, etName, etNotes, ivCardImage, spinnerColor,
+          tilMembers, tilName, tilNotes, tvColorLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -13,9 +13,18 @@ import com.hit.aliasgameapp.R
 import com.hit.aliasgameapp.databinding.FragmentGameCardBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.content.Context
 
 @AndroidEntryPoint
-class GameCardFragment : Fragment(R.layout.fragment_game_card) {
+class GameCardFragment : Fragment(R.layout.fragment_game_card), SensorEventListener {
+
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+    private var lastShakeTime: Long = 0
 
     // Connect to the new ViewModel
     private val viewModel: GameViewModel by viewModels()
@@ -26,6 +35,9 @@ class GameCardFragment : Fragment(R.layout.fragment_game_card) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentGameCardBinding.bind(view)
+
+        sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         // 1. Observe all data updates
         viewLifecycleOwner.lifecycleScope.launch {
@@ -65,11 +77,17 @@ class GameCardFragment : Fragment(R.layout.fragment_game_card) {
                 launch {
                     viewModel.isGameOver.collect { isOver ->
                         if (isOver) {
-                            Toast.makeText(context, "Round is Over!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context,
+                                getString(R.string.round_is_over), Toast.LENGTH_SHORT).show()
+                            val finalScore = viewModel.score.value
+                            val bundle = Bundle().apply {
+                                putInt("roundScore", finalScore)
+                            }
+                            parentFragmentManager.setFragmentResult("roundRequest", bundle)
                             // Wait 2 seconds and go back
                             binding.root.postDelayed({
                                 findNavController().popBackStack()
-                            }, 2000)
+                            }, 500)
                         }
                     }
                 }
@@ -90,4 +108,37 @@ class GameCardFragment : Fragment(R.layout.fragment_game_card) {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onResume() {
+        super.onResume()
+        accelerometer?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
+            val x = event.values[0]
+            val y = event.values[1]
+            val z = event.values[2]
+
+            val acceleration = kotlin.math.sqrt((x * x + y * y + z * z).toDouble())
+            val currentShakeTime = System.currentTimeMillis()
+
+            if (acceleration > 20 && (currentShakeTime - lastShakeTime > 2000)) {
+                lastShakeTime = currentShakeTime
+
+                viewModel.onIncorrect()
+                Toast.makeText(context,
+                    getString(R.string.shake_detected_word_skipped), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 }
